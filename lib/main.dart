@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'Pages/home_page.dart';
 
 void main() {
-  runApp(const NSBMEZ());
+  runApp(const MyApp());
 }
 
-class NSBMEZ extends StatelessWidget {
-  const NSBMEZ({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(home: HomePage());
