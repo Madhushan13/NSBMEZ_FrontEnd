@@ -6,7 +6,11 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      body: Center(
+        child: Image.asset(
+          'assets/images/whatsapp-image-2023-07-12-at-2024-1-XRs.png',
+        ),
+      ),
     );
   }
 }
