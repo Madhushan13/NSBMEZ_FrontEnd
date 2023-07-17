@@ -1,15 +1,79 @@
 import 'package:flutter/material.dart';
+import 'login_page.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<double> _fadeAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Initialize the animation controller
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 3),
+    );
+
+    // Define the fade animation from 0.0 to 1.0
+    _fadeAnimation = Tween<double>(begin: 0.0, end: 2.0).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.easeIn,
+      ),
+    );
+
+    // Start the animation after a delay of 2 seconds
+    Future.delayed(const Duration(seconds: 2), () {
+      _animationController.forward();
+    });
+  }
+
+  void _redirectToLogin(BuildContext context) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const LoginPage(),
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    _animationController.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        // Animation has completed, navigate to the login page
+        _redirectToLogin(context);
+      }
+    });
+
     return Scaffold(
-      body: Center(
-        child: Image.asset(
-          'assets/images/whatsapp-image-2023-07-12-at-2024-1-XRs.png',
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: FadeTransition(
+              opacity: _fadeAnimation,
+              child: Image.asset(
+                'assets/images/whatsapp-image-2023-07-12-at-2024-1-XRs.png',
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
