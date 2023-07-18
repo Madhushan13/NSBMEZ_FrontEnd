@@ -64,6 +64,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/images/whatsapp-image-2023-07-12-at-2024-1-XRs.png
+    - assets/images/usermaleicon-1-497.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
