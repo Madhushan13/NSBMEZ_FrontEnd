@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ResetPW extends StatelessWidget {
-  const ResetPW({super.key});
+class ResetPWPage extends StatelessWidget {
+  const ResetPWPage({super.key});
 
   @override
   Widget build(BuildContext context) {
