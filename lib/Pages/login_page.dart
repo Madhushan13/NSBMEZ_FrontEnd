@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/Pages/resetpw_page.dart';
+import 'package:flutter_application/Pages/signup_page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -61,9 +63,19 @@ class LoginPage extends StatelessWidget {
                   // Forgot Password
                   GestureDetector(
                     onTap: () {
-                      // LINK FORGOT PW HERE
+                      //FORGOT PW LINK
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ResetPW()));
                     },
-                    child: const Text('Forgot Password?'),
+                    child: const Text(
+                      'Forgot Password?',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.blue,
+                      ),
+                    ),
                   ),
 
                   const Spacer(),
@@ -80,7 +92,11 @@ class LoginPage extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          // LINK SIGN UP HERE
+                          //SIGN UP LINK
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const SignUp()));
                         },
                         child: const Text(
                           'Sign Up',

@@ -32,16 +32,6 @@ class ResultsPage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      // Back Button
-                      IconButton(
-                        iconSize: 50,
-                        color: Colors.black,
-                        icon: const Icon(Icons.arrow_back),
-                        onPressed: () {
-                          // Handle the back button press here
-                          Navigator.pop(context);
-                        },
-                      ),
                       // Search Bar
                       Expanded(
                         child: Container(
