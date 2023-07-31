@@ -18,8 +18,8 @@ class Homepage1 extends StatelessWidget {
                   // This next line does the trick.
                   scrollDirection: Axis.horizontal,
                   children: <Widget>[
-                    _buildCurvedCard(context, 'asset/now1.jpeg'),
-                    _buildCurvedCard(context, 'asset/now2.jpeg'),
+                    _buildCurvedCard(context, 'assets/images/now1.jpeg'),
+                    _buildCurvedCard(context, 'assets/now2.jpeg'),
                     _buildCurvedCard(context, 'asset/now3.jpeg'),
                     _buildCurvedCard(context, 'asset/now4.jpeg'),
                     _buildCurvedCard(context, 'asset/now5.jpeg'),
