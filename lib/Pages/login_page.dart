@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/Pages/home_page1.dart';
+import 'package:flutter_application/Pages/home_page.dart';
+import 'package:flutter_application/Pages/loading_page.dart';
 import 'package:flutter_application/Pages/resetpw_page.dart';
-import 'package:flutter_application/Pages/signup_page.dart';
 import 'package:flutter_application/Pages/signup_page.dart';
 
 class LoginPage extends StatelessWidget {
@@ -55,7 +55,10 @@ class LoginPage extends StatelessWidget {
                   // Sign In Button
                   ElevatedButton(
                     onPressed: () {
-                      // LINK SIGN IN HERE
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomePage()));
                     },
                     child: const Text('Sign In'),
                   ),
@@ -98,7 +101,7 @@ class LoginPage extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Homepage1()));
+                                  builder: (context) => const SignUp()));
                         },
                         child: const Text(
                           'Sign Up',
