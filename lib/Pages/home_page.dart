@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'qr_scanner.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,106 +17,139 @@ class HomePage extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
                 height: 200,
-                child: PageView(
-                  // This next line does the trick.
-                  scrollDirection: Axis.horizontal,
-                  children: <Widget>[
+                child: CarouselSlider(
+                  items: [
                     _buildCurvedCard(context, 'assets/images/now1.jpeg'),
-                    _buildCurvedCard(context, 'assets/now2.jpeg'),
-                    _buildCurvedCard(context, 'asset/now3.jpeg'),
-                    _buildCurvedCard(context, 'asset/now4.jpeg'),
-                    _buildCurvedCard(context, 'asset/now5.jpeg'),
+                    _buildCurvedCard(context, 'assets/images/now2.jpeg'),
+                    _buildCurvedCard(context, 'assets/images/now3.jpeg'),
+                    _buildCurvedCard(context, 'assets/images/now4.jpeg'),
+                    _buildCurvedCard(context, 'assets/images/now5.jpeg'),
                   ],
+                  options: CarouselOptions(
+                    autoPlay: true,
+                    autoPlayInterval: Duration(seconds: 5),
+                  ),
                 ),
               ),
               const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Wrap(
-                  spacing: 16.0,
-                  runSpacing: 16.0,
-                  alignment: WrapAlignment
-                      .spaceEvenly, // Add this line for even spacing within each row
+                child: Column(
                   children: [
-                    HomeCard(
-                      icon: Icons.notifications,
-                      label: 'Notification',
-                      onTap: () {
-                        // Add your navigation logic here
-                      },
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        HomeCard(
+                          icon: Icons.notifications,
+                          label: 'Notification',
+                          onTap: () {
+                            // Add your navigation logic here
+                          },
+                        ),
+                        HomeCard(
+                          icon: Icons.calendar_today,
+                          label: 'Academic Calendar',
+                          onTap: () {
+                            // Add your navigation logic here
+                          },
+                        ),
+                        HomeCard(
+                          icon: Icons.qr_code_scanner,
+                          label: 'QR Scanner',
+                          onTap: () {
+                            // Add your navigation logic here
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const QRScanner(),
+                              ),
+                            );
+                          },
+                        ),
+                      ],
                     ),
-                    HomeCard(
-                      icon: Icons.calendar_today,
-                      label: 'Academic Calendar',
-                      onTap: () {
-                        // Add your navigation logic here
-                      },
+                    const SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        HomeCard(
+                          icon: Icons.access_time,
+                          label: 'Attendance',
+                          onTap: () {
+                            // Add your navigation logic here
+                          },
+                        ),
+                        HomeCard(
+                          icon: Icons.table_chart,
+                          label: 'Time Table',
+                          onTap: () {
+                            // Add your navigation logic here
+                          },
+                        ),
+                        HomeCard(
+                          icon: Icons.event,
+                          label: 'Events',
+                          onTap: () {
+                            // Add your navigation logic here
+                          },
+                        ),
+                      ],
                     ),
-                    HomeCard(
-                      icon: Icons.qr_code_scanner,
-                      label: 'QR Scanner',
-                      onTap: () {
-                        // Add your navigation logic here
-                      },
+                    const SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        HomeCard(
+                          icon: Icons.calculate,
+                          label: 'GPA Calculator',
+                          onTap: () {
+                            // Add your navigation logic here
+                          },
+                        ),
+                        HomeCard(
+                          icon: Icons.poll,
+                          label: 'Result',
+                          onTap: () {
+                            // Add your navigation logic here
+                          },
+                        ),
+                        HomeCard(
+                          icon: Icons.account_balance_wallet,
+                          label: 'My Account',
+                          onTap: () {
+                            // Add your navigation logic here
+                          },
+                        ),
+                      ],
                     ),
-                    HomeCard(
-                      icon: Icons.access_time,
-                      label: 'Attendance',
-                      onTap: () {
-                        // Add your navigation logic here
-                      },
-                    ),
-                    HomeCard(
-                      icon: Icons.table_chart,
-                      label: 'Time Table',
-                      onTap: () {
-                        // Add your navigation logic here
-                      },
-                    ),
-                    HomeCard(
-                      icon: Icons.event,
-                      label: 'Events',
-                      onTap: () {
-                        // Add your navigation logic here
-                      },
-                    ),
-                    HomeCard(
-                      icon: Icons.calculate,
-                      label: 'GPA Calculator',
-                      onTap: () {
-                        // Add your navigation logic here
-                      },
-                    ),
-                    HomeCard(
-                      icon: Icons.poll,
-                      label: 'Result',
-                      onTap: () {
-                        // Add your navigation logic here
-                      },
-                    ),
-                    HomeCard(
-                      icon: Icons.account_balance_wallet,
-                      label: 'My Account',
-                      onTap: () {
-                        // Add your navigation logic here
-                      },
-                    ),
-                    HomeCard(
-                      icon: Icons.directions_bus,
-                      label: 'Transport',
-                      onTap: () {
-                        // Add your navigation logic here
-                      },
-                    ),
-                    HomeCard(
-                      icon: Icons.chat,
-                      label: 'Chat',
-                      onTap: () {
-                        // Add your navigation logic here
-                      },
+                    const SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        HomeCard(
+                          icon: Icons.directions_bus,
+                          label: 'Transport',
+                          onTap: () {
+                            // Add your navigation logic here
+                          },
+                        ),
+                        HomeCard(
+                          icon: Icons.chat,
+                          label: 'Chat',
+                          onTap: () {
+                            // Add your navigation logic here
+                          },
+                        ),
+                      ],
                     ),
                   ],
                 ),
+              ),
+              const SizedBox(height: 20),
+              // Page indicator
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: _buildPageIndicator(),
               ),
             ],
           ),
@@ -196,6 +232,36 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+
+  Widget _buildCurvedCard(BuildContext context, String assetPath) {
+    return Container(
+      width: MediaQuery.of(context).size.width - 40,
+      margin: const EdgeInsets.symmetric(horizontal: 10),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+        child: Image.asset(
+          assetPath,
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPageIndicator() {
+    return SmoothPageIndicator(
+      controller: PageController(viewportFraction: 0.8, initialPage: 0),
+      count: 5, // Number of carousel images
+      effect: WormEffect(
+        dotHeight: 8,
+        dotWidth: 8,
+        activeDotColor: Colors.blue,
+        dotColor: Colors.grey,
+      ),
+    );
+  }
 }
 
 class HomeCard extends StatelessWidget {
@@ -203,49 +269,53 @@ class HomeCard extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
 
-  const HomeCard(
-      {Key? key, required this.icon, required this.label, required this.onTap})
-      : super(key: key);
+  const HomeCard({
+    Key? key,
+    required this.icon,
+    required this.label,
+    required this.onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-      ),
-      elevation: 2,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(20),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(icon, size: 48),
-              const SizedBox(height: 8),
-              Text(label, style: const TextStyle(fontWeight: FontWeight.bold)),
-            ],
+    return SizedBox(
+      width:
+          MediaQuery.of(context).size.width * 0.3, // Fixed width for the card
+      height: 120, // Fixed height for the card
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        elevation: 30,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(20),
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(
+              mainAxisAlignment:
+                  MainAxisAlignment.end, // Align text to the bottom
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Icon(
+                  icon,
+                  size: 48,
+                  color: const Color.fromARGB(255, 74, 187, 9),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  label,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 9,
+                    color: Color.fromARGB(255, 6, 129, 245),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
-}
-
-Widget _buildCurvedCard(BuildContext context, String assetPath) {
-  return Container(
-    width: MediaQuery.of(context).size.width - 40,
-    margin: const EdgeInsets.symmetric(horizontal: 10),
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(20),
-    ),
-    child: ClipRRect(
-      borderRadius: BorderRadius.circular(20),
-      child: Image.asset(
-        assetPath,
-        fit: BoxFit.cover,
-      ),
-    ),
-  );
 }
