@@ -24,69 +24,92 @@ class _QRScannerState extends State<QRScanner> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: bgColor,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
-        title: Text("QR Scanner",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: const Color.fromARGB(255, 0, 0, 0),
-              letterSpacing: 1,
-            )),
+        title: Text(
+          "Scanning",
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+            letterSpacing: 1,
+          ),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0, // No shadow
       ),
-      body: Container(
-          width: double.infinity,
-          padding: EdgeInsets.all(16),
-          child: Column(children: [
+      body: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          children: [
             Expanded(
-                child: Container(
-              child: Column(
+              child: Container(
+                alignment: Alignment.center,
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Plese scan the QR code in the area",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blueGrey,
-                          letterSpacing: 1,
-                        )),
+                    Text(
+                      "Please scan the QR code in the area",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blueGrey,
+                        letterSpacing: 1,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
                     SizedBox(height: 16),
-                    Text("Scanning will start automatically",
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Color.fromARGB(222, 0, 0, 0),
-                        )),
-                  ]),
-            )),
+                    Text(
+                      "Scanning will start automatically",
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.black87,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              ),
+            ),
             Expanded(
-                flex: 4,
-                child: Container(
-                  child: MobileScanner(onDetect: (capture) {
+              flex: 3,
+              child: Container(
+                child: MobileScanner(
+                  onDetect: (capture) {
                     if (!isScanComplete) {
                       closeScreen();
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ResultsScreen(
-                                    closeScreen: closeScreen,
-                                    Code: null,
-                                  )));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ResultsScreen(
+                            closeScreen: closeScreen,
+                            Code: null,
+                          ),
+                        ),
+                      );
                     }
-                  }),
-                )),
+                  },
+                ),
+              ),
+            ),
             Expanded(
-                child: Container(
-              alignment: Alignment.center,
-              child: Text("Add text",
+              child: Container(
+                alignment: Alignment.center,
+                child: Text(
+                  "Scanning...",
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: const Color.fromARGB(255, 0, 0, 0),
+                    color: Colors.black,
                     letterSpacing: 1,
-                  )),
-            )),
-          ])),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

@@ -11,7 +11,7 @@ class ResultsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("QR Scanner",
+        title: Text("",
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -23,13 +23,15 @@ class ResultsScreen extends StatelessWidget {
         padding: const EdgeInsets.all(12.0),
         child: Column(children: [
           QrImageView(data: '', size: 200),
-          const Text("Scanned Results",
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: const Color.fromARGB(255, 0, 0, 0),
-                letterSpacing: 1,
-              )),
+          SizedBox(height: 16),
+          Center(
+              child: const Text("Scanned Results",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: const Color.fromARGB(255, 0, 0, 0),
+                    letterSpacing: 1,
+                  ))),
           SizedBox(height: 16),
           Text("RESLUT",
               style: TextStyle(
@@ -41,7 +43,7 @@ class ResultsScreen extends StatelessWidget {
           SizedBox(width: MediaQuery.of(context).size.width - 100, height: 16),
           ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 18, 145, 209),
+                backgroundColor: Color.fromARGB(255, 26, 182, 26),
               ),
               onPressed: () {},
               child: Text("Copy",
