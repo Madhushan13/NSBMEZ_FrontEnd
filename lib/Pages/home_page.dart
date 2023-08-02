@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/Pages/all_widget_class.dart';
+import 'events_page.dart';
 import 'qr_scanner.dart';
 
 class HomePage extends StatelessWidget {
@@ -75,6 +76,12 @@ class HomePage extends StatelessWidget {
                           label: 'Events',
                           onTap: () {
                             // Add your navigation logic here
+                             Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>  const HomePage(),
+                              )
+                              );
                           },
                         ),
                       ],
