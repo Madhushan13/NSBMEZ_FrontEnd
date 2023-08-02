@@ -25,13 +25,6 @@ class HomePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         HomeCard(
-                          icon: Icons.notifications,
-                          label: 'Notification',
-                          onTap: () {
-                            // Add your navigation logic here
-                          },
-                        ),
-                        HomeCard(
                           icon: Icons.calendar_today,
                           label: 'Academic Calendar',
                           onTap: () {
@@ -66,7 +59,7 @@ class HomePage extends StatelessWidget {
                         ),
                         HomeCard(
                           icon: Icons.table_chart,
-                          label: 'Time Table',
+                          label: 'Lecture Time Table',
                           onTap: () {
                             // Add your navigation logic here
                           },
@@ -76,12 +69,11 @@ class HomePage extends StatelessWidget {
                           label: 'Events',
                           onTap: () {
                             // Add your navigation logic here
-                             Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>  const HomePage(),
-                              )
-                              );
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const HomePage(),
+                                ));
                           },
                         ),
                       ],
@@ -127,6 +119,13 @@ class HomePage extends StatelessWidget {
                         HomeCard(
                           icon: Icons.chat,
                           label: 'Chat',
+                          onTap: () {
+                            // Add your navigation logic here
+                          },
+                        ),
+                        HomeCard(
+                          icon: Icons.chat,
+                          label: 'Payments',
                           onTap: () {
                             // Add your navigation logic here
                           },

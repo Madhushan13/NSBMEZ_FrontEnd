@@ -48,42 +48,42 @@ class ResultsPage extends StatelessWidget {
                 ),
                 ListTile(
                   leading: const Icon(Icons.account_circle),
-                  title: const Text('Profile'),
+                  title: const Text('My Profile'),
                   onTap: () {
                     // Add your profile navigation logic here
                   },
                 ),
                 ListTile(
                   leading: const Icon(Icons.directions_bus),
-                  title: const Text('Transport Service'),
+                  title: const Text('Language'),
                   onTap: () {
                     // Add your transport service navigation logic here
                   },
                 ),
                 ListTile(
-                  leading: const Icon(Icons.table_chart),
-                  title: const Text('Time Table'),
-                  onTap: () {
-                    // Add your time table navigation logic here
-                  },
-                ),
-                ListTile(
                   leading: const Icon(Icons.qr_code),
-                  title: const Text('Take Attendance/QR'),
+                  title: const Text('Student Support'),
                   onTap: () {
                     // Add your attendance/QR navigation logic here
                   },
                 ),
                 ListTile(
                   leading: const Icon(Icons.event),
-                  title: const Text('Events'),
+                  title: const Text('Settings'),
                   onTap: () {
                     // Add your events navigation logic here
                   },
                 ),
                 ListTile(
+                  leading: const Icon(Icons.table_chart),
+                  title: const Text('About us'),
+                  onTap: () {
+                    // Add your time table navigation logic here
+                  },
+                ),
+                ListTile(
                   leading: const Icon(Icons.poll),
-                  title: const Text('Result'),
+                  title: const Text('Terms and Conditions '),
                   onTap: () {
                     // Add your result navigation logic here
                   },
