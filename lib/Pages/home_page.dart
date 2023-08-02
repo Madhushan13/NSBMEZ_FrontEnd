@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:flutter_application/Pages/all_widget_class.dart';
 import 'qr_scanner.dart';
 
 class HomePage extends StatelessWidget {
@@ -14,23 +13,8 @@ class HomePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Container(
-                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-                height: 200,
-                child: CarouselSlider(
-                  items: [
-                    _buildCurvedCard(context, 'assets/images/now1.jpeg'),
-                    _buildCurvedCard(context, 'assets/images/now2.jpeg'),
-                    _buildCurvedCard(context, 'assets/images/now3.jpeg'),
-                    _buildCurvedCard(context, 'assets/images/now4.jpeg'),
-                    _buildCurvedCard(context, 'assets/images/now5.jpeg'),
-                  ],
-                  options: CarouselOptions(
-                    autoPlay: true,
-                    autoPlayInterval: Duration(seconds: 5),
-                  ),
-                ),
-              ),
+              const SizedBox(height: 20),
+              const CarouselWithIndicator(),
               const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -145,12 +129,6 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 20),
-              // Page indicator
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: _buildPageIndicator(),
-              ),
             ],
           ),
         ),
@@ -227,92 +205,6 @@ class HomePage extends StatelessWidget {
                 },
               ),
             ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildCurvedCard(BuildContext context, String assetPath) {
-    return Container(
-      width: MediaQuery.of(context).size.width - 40,
-      margin: const EdgeInsets.symmetric(horizontal: 10),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: Image.asset(
-          assetPath,
-          fit: BoxFit.cover,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildPageIndicator() {
-    return SmoothPageIndicator(
-      controller: PageController(viewportFraction: 0.8, initialPage: 0),
-      count: 5, // Number of carousel images
-      effect: WormEffect(
-        dotHeight: 8,
-        dotWidth: 8,
-        activeDotColor: Colors.blue,
-        dotColor: Colors.grey,
-      ),
-    );
-  }
-}
-
-class HomeCard extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final VoidCallback onTap;
-
-  const HomeCard({
-    Key? key,
-    required this.icon,
-    required this.label,
-    required this.onTap,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width:
-          MediaQuery.of(context).size.width * 0.3, // Fixed width for the card
-      height: 120, // Fixed height for the card
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-        elevation: 30,
-        child: InkWell(
-          onTap: onTap,
-          borderRadius: BorderRadius.circular(20),
-          child: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Column(
-              mainAxisAlignment:
-                  MainAxisAlignment.end, // Align text to the bottom
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Icon(
-                  icon,
-                  size: 48,
-                  color: const Color.fromARGB(255, 74, 187, 9),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  label,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 9,
-                    color: Color.fromARGB(255, 6, 129, 245),
-                  ),
-                ),
-              ],
-            ),
           ),
         ),
       ),
