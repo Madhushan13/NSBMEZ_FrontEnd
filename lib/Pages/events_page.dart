@@ -4,31 +4,38 @@ class EventsPage extends StatelessWidget {
   // Sample event data
   final List<Map<String, String>> events = [
     {
-      'date': '10',
-      'month': 'Aug',
+      'date': '24',
+      'month': 'Nov',
       'year': '2023',
-      'title': 'NSBM Sport Fiesta 2023',
+      'title': 'ICOBI 2023',
       'description':
-          'The Sports Fiesta 2023 organized by theNSBM Green University will behappening from the 20th of February 2023 to the 16th March 2023.',
-      'imageUrl': 'assets/images/n-1.png',
-    },
-    {
-      'date': '15',
-      'month': 'Aug',
-      'year': '2023',
-      'title': 'NSBM Sport Fiesta 2023',
-      'description':
-          'NSBM Green University will behappening from the 20th of February 2023 to the 16th March 2023.',
+          'ICOBI 2023 is the sixth International Conference on Business Innovation that will be held at NSBM Green University of Sri Lanka. ICOBI has been held annually since 2018, structured each year on an impactful and timely theme related to Business Innovation and Sustainable Development',
+          
+          
       'imageUrl': 'assets/images/icobievent-jpg-1.png',
+      
+      
     },
     {
-      'date': '20',
+      'date': '02',
       'month': 'Aug',
       'year': '2023',
-      'title': 'Event 3',
+      'title': '"Emotion 4"',
       'description':
-          'In a quaint little town nestled amidst rolling hills and lush greenery, life seemed to slow down. The townsfolk would gather at the charming café to savor aromatic coffee and share stories of days gone by. Children laughed and played in the cobblestone streets, echoing the joy of a simpler time. Beyond the towns borders, a majestic forest beckoned with its mysterious allure. The sunlight filtered through the canopy, casting a magical glow on the forest floor. Natures symphony filled the air as birds sang in harmony. It was a place where worries faded, and the beauty of life took center stage',
-      'imageUrl': 'assets/images/n-1.png',
+          '“Emotion 4” the grand drama show presented by the NSBM Drama Club for the year 2023 was held on the 31st July 2023 at NSBM Auditorium. Bringing the Horror theme to life, the 2023 edition of this annual show was named “The Spirits Have a Message”. ',
+      'imageUrl': 'assets/images/Emotion4-drama-club9.jpg',
+
+     
+    },
+    {
+      'date': '31',
+      'month': 'july',
+      'year': '2023',
+      'title': '"Green Base" night camp',
+      
+       'description':
+          '“Green Base”, the night camp organised by the Association of Business Management had its 2023 chapter which continued for two successful days on 28th and 29th July 2023 at NSBM Grounds.',
+      'imageUrl': 'assets/images/Green Base night camp.jpg',
     },
     // Add more sample events here
   ];
