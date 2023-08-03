@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+//import 'package:flutter/services.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:qr_scanner/qr_scanner.dart';
+//import 'package:qr_scanner/qr_scanner.dart';
 
 import 'qr_results_screen.dart';
 
@@ -27,7 +27,7 @@ class _QRScannerState extends State<QRScanner> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
+        title: const Text(
           "Scanning",
           style: TextStyle(
             fontSize: 24,
@@ -40,13 +40,13 @@ class _QRScannerState extends State<QRScanner> {
         elevation: 0, // No shadow
       ),
       body: Padding(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           children: [
             Expanded(
               child: Container(
                 alignment: Alignment.center,
-                child: Column(
+                child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
@@ -74,29 +74,27 @@ class _QRScannerState extends State<QRScanner> {
             ),
             Expanded(
               flex: 3,
-              child: Container(
-                child: MobileScanner(
-                  onDetect: (capture) {
-                    if (!isScanComplete) {
-                      closeScreen();
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ResultsScreen(
-                            closeScreen: closeScreen,
-                            Code: null,
-                          ),
+              child: MobileScanner(
+                onDetect: (capture) {
+                  if (!isScanComplete) {
+                    closeScreen();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ResultsScreen(
+                          closeScreen: closeScreen,
+                          code: null,
                         ),
-                      );
-                    }
-                  },
-                ),
+                      ),
+                    );
+                  }
+                },
               ),
             ),
             Expanded(
               child: Container(
                 alignment: Alignment.center,
-                child: Text(
+                child: const Text(
                   "Scanning...",
                   style: TextStyle(
                     fontSize: 20,

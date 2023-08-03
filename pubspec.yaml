@@ -79,7 +79,12 @@ flutter:
     - assets/images/poson2.jpg
     - assets/images/poson3.jpg
     - assets/images/rasoga.jpg
+    - assets/images/n-1.png
+    - assets/images/icobievent-jpg-1.png
     - assets/images/athletic1.jpg
+    - assets/images/Emotion4-drama-club9.jpg
+    - assets/images/Green Base night camp.jpg
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
