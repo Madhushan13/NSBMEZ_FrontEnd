@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/Pages/all_widget_class.dart';
 import 'events_page.dart';
 import 'qr_scanner.dart';
-import 'time_table.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -62,13 +61,6 @@ class HomePage extends StatelessWidget {
                           icon: Icons.table_chart,
                           label: 'Lecture Time Table',
                           onTap: () {
-                            // Add your navigation logic here
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => TimeTable(),
-                              ),
-                            );
                             // Add your navigation logic here
                           },
                         ),
@@ -147,18 +139,27 @@ class HomePage extends StatelessWidget {
           ),
         ),
         appBar: AppBar(
-          title: const Text('Home Page'),
+          title: const Text('Results'),
           actions: [
+            // Notification Icon
             IconButton(
-              icon: const Icon(Icons.search),
               onPressed: () {
-                // Add your search functionality here
-                const Text('Search icon pressed');
+                // Add your notification logic here
               },
+              icon: const Icon(Icons.notifications),
+            ),
+            // EndDrawer Icon
+            Builder(
+              builder: (context) => IconButton(
+                onPressed: () {
+                  Scaffold.of(context).openEndDrawer();
+                },
+                icon: const Icon(Icons.menu),
+              ),
             ),
           ],
         ),
-        drawer: Drawer(
+        endDrawer: Drawer(
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
@@ -171,42 +172,42 @@ class HomePage extends StatelessWidget {
               ),
               ListTile(
                 leading: const Icon(Icons.account_circle),
-                title: const Text('Profile'),
+                title: const Text('My Profile'),
                 onTap: () {
                   // Add your profile navigation logic here
                 },
               ),
               ListTile(
                 leading: const Icon(Icons.directions_bus),
-                title: const Text('Transport Service'),
+                title: const Text('Language'),
                 onTap: () {
                   // Add your transport service navigation logic here
                 },
               ),
               ListTile(
-                leading: const Icon(Icons.table_chart),
-                title: const Text('Time Table'),
-                onTap: () {
-                  // Add your time table navigation logic here
-                },
-              ),
-              ListTile(
                 leading: const Icon(Icons.qr_code),
-                title: const Text('Take Attendance/QR'),
+                title: const Text('Student Support'),
                 onTap: () {
                   // Add your attendance/QR navigation logic here
                 },
               ),
               ListTile(
                 leading: const Icon(Icons.event),
-                title: const Text('Events'),
+                title: const Text('Settings'),
                 onTap: () {
                   // Add your events navigation logic here
                 },
               ),
               ListTile(
+                leading: const Icon(Icons.table_chart),
+                title: const Text('About us'),
+                onTap: () {
+                  // Add your time table navigation logic here
+                },
+              ),
+              ListTile(
                 leading: const Icon(Icons.poll),
-                title: const Text('Result'),
+                title: const Text('Terms and Conditions '),
                 onTap: () {
                   // Add your result navigation logic here
                 },

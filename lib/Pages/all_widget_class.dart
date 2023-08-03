@@ -14,7 +14,6 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicator> {
   int activeIndex = 0;
   final controller = CarouselController();
   final urlImages = [
-    'assets/images/events recap.jpg',
     'assets/images/drama1.jpg',
     'assets/images/colorsnight23.jpg',
     'assets/images/fiesta.jpg',
@@ -23,9 +22,11 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicator> {
     'assets/images/poson1.jpg',
     'assets/images/poson2.jpg',
     'assets/images/poson3.jpg',
-    'assets/images/rasoga.jpg',
     'assets/images/athletic1.jpg'
   ];
+
+  final imageWidth = 300.0; // Set your desired width for the images
+  final imageHeight = 180.0; // Set your desired height for the images
 
   @override
   Widget build(BuildContext context) {
@@ -39,11 +40,12 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicator> {
             return buildImage(urlImage, index);
           },
           options: CarouselOptions(
-            height: 180,
+            height: imageHeight,
             autoPlay: true,
             enableInfiniteScroll: true, // Enable infinite scroll
             autoPlayAnimationDuration: Duration(seconds: 3),
-            enlargeCenterPage: false, // Set to false
+            enlargeCenterPage: true, // Set to true for full view
+            viewportFraction: 0.5, // Adjust this value for spacing
             onPageChanged: (index, reason) =>
                 setState(() => activeIndex = index),
           ),
@@ -72,6 +74,8 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicator> {
   void animateToSlide(int index) => controller.animateToPage(index);
 
   Widget buildImage(String urlImage, int index) => Container(
+        width: imageWidth,
+        height: imageHeight,
         child: Image.asset(urlImage, fit: BoxFit.cover),
       );
 }
