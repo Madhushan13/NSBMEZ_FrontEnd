@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/Pages/all_widget_class.dart';
 import 'events_page.dart';
 import 'qr_scanner.dart';
+import 'time_table.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -62,6 +63,13 @@ class HomePage extends StatelessWidget {
                           label: 'Lecture Time Table',
                           onTap: () {
                             // Add your navigation logic here
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const TimeTable(),
+                              ),
+                            );
+                            // Add your navigation logic here
                           },
                         ),
                         HomeCard(
@@ -72,7 +80,7 @@ class HomePage extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const HomePage(),
+                                  builder: (context) => EventsPage(),
                                 ));
                           },
                         ),
@@ -139,27 +147,18 @@ class HomePage extends StatelessWidget {
           ),
         ),
         appBar: AppBar(
-          title: const Text('Results'),
+          title: const Text('Home Page'),
           actions: [
-            // Notification Icon
             IconButton(
+              icon: const Icon(Icons.search),
               onPressed: () {
-                // Add your notification logic here
+                // Add your search functionality here
+                const Text('Search icon pressed');
               },
-              icon: const Icon(Icons.notifications),
-            ),
-            // EndDrawer Icon
-            Builder(
-              builder: (context) => IconButton(
-                onPressed: () {
-                  Scaffold.of(context).openEndDrawer();
-                },
-                icon: const Icon(Icons.menu),
-              ),
             ),
           ],
         ),
-        endDrawer: Drawer(
+        drawer: Drawer(
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
@@ -172,42 +171,42 @@ class HomePage extends StatelessWidget {
               ),
               ListTile(
                 leading: const Icon(Icons.account_circle),
-                title: const Text('My Profile'),
+                title: const Text('Profile'),
                 onTap: () {
                   // Add your profile navigation logic here
                 },
               ),
               ListTile(
                 leading: const Icon(Icons.directions_bus),
-                title: const Text('Language'),
+                title: const Text('Transport Service'),
                 onTap: () {
                   // Add your transport service navigation logic here
                 },
               ),
               ListTile(
+                leading: const Icon(Icons.table_chart),
+                title: const Text('Time Table'),
+                onTap: () {
+                  // Add your time table navigation logic here
+                },
+              ),
+              ListTile(
                 leading: const Icon(Icons.qr_code),
-                title: const Text('Student Support'),
+                title: const Text('Take Attendance/QR'),
                 onTap: () {
                   // Add your attendance/QR navigation logic here
                 },
               ),
               ListTile(
                 leading: const Icon(Icons.event),
-                title: const Text('Settings'),
+                title: const Text('Events'),
                 onTap: () {
                   // Add your events navigation logic here
                 },
               ),
               ListTile(
-                leading: const Icon(Icons.table_chart),
-                title: const Text('About us'),
-                onTap: () {
-                  // Add your time table navigation logic here
-                },
-              ),
-              ListTile(
                 leading: const Icon(Icons.poll),
-                title: const Text('Terms and Conditions '),
+                title: const Text('Result'),
                 onTap: () {
                   // Add your result navigation logic here
                 },
