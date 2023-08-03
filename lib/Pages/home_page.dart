@@ -66,7 +66,7 @@ class HomePage extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => TimeTable(),
+                                builder: (context) => const TimeTable(),
                               ),
                             );
                             // Add your navigation logic here

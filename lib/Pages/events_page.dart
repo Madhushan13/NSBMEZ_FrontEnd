@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class EventsPage extends StatelessWidget {
   // Sample event data
   final List<Map<String, String>> events = [
@@ -9,26 +8,27 @@ class EventsPage extends StatelessWidget {
       'month': 'Aug',
       'year': '2023',
       'title': 'NSBM Sport Fiesta 2023',
-      'description': 'The Sports Fiesta 2023 organized by theNSBM Green University will behappening from the 20th of February 2023 to the 16th March 2023.',
-      'imageUrl': 'assets/n-1.png',
-
+      'description':
+          'The Sports Fiesta 2023 organized by theNSBM Green University will behappening from the 20th of February 2023 to the 16th March 2023.',
+      'imageUrl': 'assets/images/n-1.png',
     },
     {
       'date': '15',
       'month': 'Aug',
       'year': '2023',
       'title': 'NSBM Sport Fiesta 2023',
-      'description':'NSBM Green University will behappening from the 20th of February 2023 to the 16th March 2023.',
-      'imageUrl': 'assets/icobievent-jpg-1.png',
-
+      'description':
+          'NSBM Green University will behappening from the 20th of February 2023 to the 16th March 2023.',
+      'imageUrl': 'assets/images/icobievent-jpg-1.png',
     },
     {
       'date': '20',
       'month': 'Aug',
       'year': '2023',
       'title': 'Event 3',
-      'description': 'In a quaint little town nestled amidst rolling hills and lush greenery, life seemed to slow down. The townsfolk would gather at the charming café to savor aromatic coffee and share stories of days gone by. Children laughed and played in the cobblestone streets, echoing the joy of a simpler time. Beyond the towns borders, a majestic forest beckoned with its mysterious allure. The sunlight filtered through the canopy, casting a magical glow on the forest floor. Natures symphony filled the air as birds sang in harmony. It was a place where worries faded, and the beauty of life took center stage',
-      'imageUrl': 'assets/n-1.png',
+      'description':
+          'In a quaint little town nestled amidst rolling hills and lush greenery, life seemed to slow down. The townsfolk would gather at the charming café to savor aromatic coffee and share stories of days gone by. Children laughed and played in the cobblestone streets, echoing the joy of a simpler time. Beyond the towns borders, a majestic forest beckoned with its mysterious allure. The sunlight filtered through the canopy, casting a magical glow on the forest floor. Natures symphony filled the air as birds sang in harmony. It was a place where worries faded, and the beauty of life took center stage',
+      'imageUrl': 'assets/images/n-1.png',
     },
     // Add more sample events here
   ];
@@ -146,7 +146,7 @@ class EventCard extends StatelessWidget {
               ),
             ),
           ),
-          Image.network(
+          Image.asset(
             imageUrl,
             height: 200,
             width: double.infinity,

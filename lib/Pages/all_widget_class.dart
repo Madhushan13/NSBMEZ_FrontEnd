@@ -42,7 +42,7 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicator> {
             height: 180,
             autoPlay: true,
             enableInfiniteScroll: true, // Enable infinite scroll
-            autoPlayAnimationDuration: Duration(seconds: 3),
+            autoPlayAnimationDuration: const Duration(seconds: 3),
             enlargeCenterPage: false, // Set to false
             onPageChanged: (index, reason) =>
                 setState(() => activeIndex = index),
@@ -71,9 +71,8 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicator> {
 
   void animateToSlide(int index) => controller.animateToPage(index);
 
-  Widget buildImage(String urlImage, int index) => Container(
-        child: Image.asset(urlImage, fit: BoxFit.cover),
-      );
+  Widget buildImage(String urlImage, int index) =>
+      Image.asset(urlImage, fit: BoxFit.cover);
 }
 
 //Home card widget
@@ -110,7 +109,8 @@ class HomeCard extends StatelessWidget {
                   MainAxisAlignment.end, // Align text to the bottom
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Icon(icon, size: 30, color: Color.fromARGB(255, 74, 187, 9)),
+                Icon(icon,
+                    size: 30, color: const Color.fromARGB(255, 74, 187, 9)),
                 const SizedBox(height: 8),
                 Text(
                   label,

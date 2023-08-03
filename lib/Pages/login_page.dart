@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/Pages/home_page.dart';
-import 'package:flutter_application/Pages/loading_page.dart';
+//import 'package:flutter_application/Pages/loading_page.dart';
 import 'package:flutter_application/Pages/resetpw_page.dart';
 import 'package:flutter_application/Pages/signup_page.dart';
 
