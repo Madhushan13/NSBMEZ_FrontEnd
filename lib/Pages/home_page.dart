@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/Pages/all_widget_class.dart';
 import 'events_page.dart';
 import 'qr_scanner.dart';
+import 'time_table.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -61,6 +62,13 @@ class HomePage extends StatelessWidget {
                           icon: Icons.table_chart,
                           label: 'Lecture Time Table',
                           onTap: () {
+                            // Add your navigation logic here
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => TimeTable(),
+                              ),
+                            );
                             // Add your navigation logic here
                           },
                         ),
