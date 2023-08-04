@@ -84,7 +84,7 @@ flutter:
     - assets/images/athletic1.jpg
     - assets/images/Emotion4-drama-club9.jpg
     - assets/images/Green Base night camp.jpg
-
+    - assets/images/calender.gif
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
