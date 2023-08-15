@@ -84,7 +84,14 @@ flutter:
     - assets/images/athletic1.jpg
     - assets/images/Emotion4-drama-club9.jpg
     - assets/images/Green Base night camp.jpg
-    - assets/images/calender.gif
+    - assets/images/time table1.gif
+    - assets/images/attendance.gif
+    - assets/images/Qr.gif
+    - assets/images/events.gif
+    - assets/images/gpa cal.gif
+    - assets/images/result.gif
+    - assets/images/transport.gif
+    - assets/images/payment1.gif
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

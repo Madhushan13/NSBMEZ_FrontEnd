@@ -59,8 +59,8 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicator> {
   Widget buildIndicator() => AnimatedSmoothIndicator(
         onDotClicked: animateToSlide,
         effect: const ScrollingDotsEffect(
-          dotHeight: 12,
-          dotWidth: 12,
+          dotHeight: 6,
+          dotWidth: 6,
           dotColor: Color.fromARGB(255, 160, 227, 231),
           activeDotColor: Color.fromARGB(255, 6, 189, 16),
           activeStrokeWidth: 2.6,
@@ -80,16 +80,15 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicator> {
       );
 }
 
-class RoundedHomeCard extends StatelessWidget {
-  final String label;
-  final VoidCallback onTap;
+class GifImageWidget extends StatelessWidget {
   final String gifImagePath;
 
-  const RoundedHomeCard({
+  const GifImageWidget({
     Key? key,
-    required this.label,
-    required this.onTap,
     required this.gifImagePath,
+    required Null Function() onTap,
+    required int height,
+    required int width,
   }) : super(key: key);
 
   @override
@@ -97,43 +96,11 @@ class RoundedHomeCard extends StatelessWidget {
     final cardSize = MediaQuery.of(context).size.width * 0.2;
 
     return Container(
-      width: cardSize,
-      child: Card(
-        color: Color.fromARGB(255, 8, 146, 5),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(40),
-        ),
-        elevation: 5,
-        child: InkWell(
-          onTap: onTap,
-          borderRadius: BorderRadius.circular(30),
-          child: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  width: cardSize * 0.5, // Adjust the width of the image
-                  height: cardSize * 0.3, // Adjust the height of the image
-                  child: Image.asset(
-                    gifImagePath,
-                    fit: BoxFit.cover, // Ensure the image covers the container
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  label,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 10,
-                    color: Color.fromARGB(255, 67, 127, 59),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
+      width: cardSize * 1, // Adjust the width of the image
+      height: cardSize * 1, // Adjust the height of the image
+      child: Image.asset(
+        gifImagePath,
+        fit: BoxFit.contain, // Ensure the image covers the container
       ),
     );
   }

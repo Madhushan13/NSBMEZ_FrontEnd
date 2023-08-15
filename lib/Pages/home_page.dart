@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'all_widget_class.dart';
+import 'Home_widget.dart';
 import 'events_page.dart';
 import 'qr_scanner.dart';
 import 'time_table.dart';
@@ -13,13 +11,14 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color.fromARGB(255, 1, 1, 37),
+        backgroundColor: Color.fromARGB(255, 243, 236, 236),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: 20),
               const CarouselWithIndicator(),
+              const SizedBox(height: 20),
               const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -31,29 +30,8 @@ class HomePage extends StatelessWidget {
                       children: [
                         Column(
                           children: [
-                            RoundedHomeCard(
-                              gifImagePath: 'assets/images/calender.gif',
+                            GestureDetector(
                               onTap: () {
-                                // Add your navigation logic here
-                              },
-                              label: '',
-                            ),
-                            const Text(
-                              'Academic Calendar',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 10,
-                                color: Color.fromARGB(255, 6, 1210, 245),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            RoundedHomeCard(
-                              gifImagePath: 'assets/images/calender.gif',
-                              onTap: () {
-                                // Add your navigation logic here
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -61,26 +39,35 @@ class HomePage extends StatelessWidget {
                                   ),
                                 );
                               },
-                              label: '',
+                              child: GifImageWidget(
+                                gifImagePath: 'assets/images/Qr.gif',
+                                width: 50,
+                                height: 50,
+                                onTap: () {},
+                              ),
                             ),
                             const Text(
                               'QR Scanner',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 10,
-                                color: Color.fromARGB(255, 1, 14, 18),
+                                color: Color.fromARGB(255, 5, 5, 5),
                               ),
                             ),
                           ],
                         ),
                         Column(
                           children: [
-                            RoundedHomeCard(
-                              gifImagePath: 'assets/images/calender.gif',
+                            GestureDetector(
                               onTap: () {
                                 // Add your navigation logic here
                               },
-                              label: '',
+                              child: GifImageWidget(
+                                gifImagePath: 'assets/images/attendance.gif',
+                                width: 50,
+                                height: 50,
+                                onTap: () {},
+                              ),
                             ),
                             const Text(
                               'Attendance',
@@ -94,10 +81,8 @@ class HomePage extends StatelessWidget {
                         ),
                         Column(
                           children: [
-                            RoundedHomeCard(
-                              gifImagePath: 'assets/images/calender.gif',
+                            GestureDetector(
                               onTap: () {
-                                // Add your navigation logic here
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -105,14 +90,42 @@ class HomePage extends StatelessWidget {
                                   ),
                                 );
                               },
-                              label: '',
+                              child: GifImageWidget(
+                                gifImagePath: 'assets/images/time table1.gif',
+                                width: 50,
+                                height: 50,
+                                onTap: () {},
+                              ),
                             ),
                             const Text(
-                              'Lecture Time Table',
+                              'Academic Time Table',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 10,
                                 color: Color.fromARGB(255, 6, 9, 11),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                // Add your navigation logic here
+                              },
+                              child: GifImageWidget(
+                                gifImagePath: 'assets/images/payment1.gif',
+                                width: 50,
+                                height: 50,
+                                onTap: () {},
+                              ),
+                            ),
+                            const Text(
+                              'Payments',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 10,
+                                color: Color.fromARGB(255, 3, 5, 7),
                               ),
                             ),
                           ],
@@ -128,10 +141,8 @@ class HomePage extends StatelessWidget {
                       children: [
                         Column(
                           children: [
-                            RoundedHomeCard(
-                              gifImagePath: 'assets/images/calender.gif',
+                            GestureDetector(
                               onTap: () {
-                                // Add your navigation logic here
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -139,7 +150,12 @@ class HomePage extends StatelessWidget {
                                   ),
                                 );
                               },
-                              label: '',
+                              child: GifImageWidget(
+                                gifImagePath: 'assets/images/events.gif',
+                                onTap: () {},
+                                height: 50,
+                                width: 50,
+                              ),
                             ),
                             const Text(
                               'Events',
@@ -153,12 +169,39 @@ class HomePage extends StatelessWidget {
                         ),
                         Column(
                           children: [
-                            RoundedHomeCard(
-                              gifImagePath: 'assets/images/calender.gif',
+                            GestureDetector(
                               onTap: () {
                                 // Add your navigation logic here
                               },
-                              label: '',
+                              child: GifImageWidget(
+                                gifImagePath: 'assets/images/transport.gif',
+                                onTap: () {},
+                                height: 50,
+                                width: 50,
+                              ),
+                            ),
+                            const Text(
+                              'Transport',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 10,
+                                color: Color.fromARGB(255, 2, 3, 4),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                // Add your navigation logic here
+                              },
+                              child: GifImageWidget(
+                                gifImagePath: 'assets/images/gpa cal.gif',
+                                onTap: () {},
+                                height: 50,
+                                width: 50,
+                              ),
                             ),
                             const Text(
                               'GPA Calculator',
@@ -172,12 +215,16 @@ class HomePage extends StatelessWidget {
                         ),
                         Column(
                           children: [
-                            RoundedHomeCard(
-                              gifImagePath: 'assets/images/calender.gif',
+                            GestureDetector(
                               onTap: () {
                                 // Add your navigation logic here
                               },
-                              label: '',
+                              child: GifImageWidget(
+                                gifImagePath: 'assets/images/result.gif',
+                                onTap: () {},
+                                height: 50,
+                                width: 50,
+                              ),
                             ),
                             const Text(
                               'Result',
@@ -189,76 +236,10 @@ class HomePage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Column(
-                          children: [
-                            RoundedHomeCard(
-                              gifImagePath: 'assets/images/calender.gif',
-                              onTap: () {
-                                // Add your navigation logic here
-                              },
-                              label: '',
-                            ),
-                            const Text(
-                              'My Account',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 10,
-                                color: Color.fromARGB(255, 4, 10, 13),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-
-                    // Third Row
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          children: [
-                            RoundedHomeCard(
-                              gifImagePath: 'assets/images/calender.gif',
-                              onTap: () {
-                                // Add your navigation logic here
-                              },
-                              label: '',
-                            ),
-                            const Text(
-                              'Transport',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 10,
-                                color: Color.fromARGB(255, 6, 1210, 245),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            RoundedHomeCard(
-                              gifImagePath: 'assets/images/calender.gif',
-                              onTap: () {
-                                // Add your navigation logic here
-                              },
-                              label: '',
-                            ),
-                            const Text(
-                              'Payments',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 10,
-                                color: Color.fromARGB(255, 6, 1210, 245),
-                              ),
-                            ),
-                          ],
-                        ),
                       ],
                     ),
 
-                    const SizedBox(height: 20),
+                    // ... (other code)
 
                     // Lecture Details Container
                     const LectureDetailsContainer(
@@ -280,7 +261,9 @@ class HomePage extends StatelessWidget {
               icon: const Icon(Icons.search),
               onPressed: () {
                 // Add your search functionality here
-                const Text('Search icon pressed');
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Search icon pressed')),
+                );
               },
             ),
           ],
