@@ -92,6 +92,8 @@ flutter:
     - assets/images/result.gif
     - assets/images/transport.gif
     - assets/images/payment1.gif
+    - assets/images/NSBMEZ Black.png
+    - assets/images/rectangle-17-bg-Rf7.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

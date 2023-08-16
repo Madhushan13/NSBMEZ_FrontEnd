@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/Pages/results_page.dart';
 import 'Home_widget.dart';
 import 'events_page.dart';
 import 'qr_scanner.dart';
@@ -247,7 +248,12 @@ class HomePage extends StatelessWidget {
                             children: [
                               GestureDetector(
                                 onTap: () {
-                                  // Add your navigation logic here
+                                  //SIGN UP LINK
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const ResultsPage()));
                                 },
                                 child: GifImageWidget(
                                   gifImagePath: 'assets/images/result.gif',
