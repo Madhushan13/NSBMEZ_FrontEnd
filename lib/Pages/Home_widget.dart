@@ -61,7 +61,7 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicator> {
         effect: const ScrollingDotsEffect(
           dotHeight: 6,
           dotWidth: 6,
-          dotColor: Color.fromARGB(255, 160, 227, 231),
+          dotColor: Color.fromARGB(255, 4, 11, 11),
           activeDotColor: Color.fromARGB(255, 6, 189, 16),
           activeStrokeWidth: 2.6,
           strokeWidth: 2.6,

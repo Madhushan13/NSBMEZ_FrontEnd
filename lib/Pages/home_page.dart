@@ -11,235 +11,269 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color.fromARGB(255, 243, 236, 236),
+        backgroundColor: Color.fromARGB(255, 246, 245, 249),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: 20),
-              const CarouselWithIndicator(),
+              Container(
+                child: const CarouselWithIndicator(),
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 213, 214, 239),
+                  border: Border.all(
+                    color: Color.fromARGB(255, 6, 134, 247),
+                    width: 5,
+                  ),
+                ),
+              ),
               const SizedBox(height: 20),
               const SizedBox(height: 20),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: Column(
                   children: [
                     // First Row
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Column(
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const QRScanner(),
-                                  ),
-                                );
-                              },
-                              child: GifImageWidget(
-                                gifImagePath: 'assets/images/Qr.gif',
-                                width: 50,
-                                height: 50,
-                                onTap: () {},
-                              ),
-                            ),
-                            const Text(
-                              'QR Scanner',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 10,
-                                color: Color.fromARGB(255, 5, 5, 5),
-                              ),
-                            ),
-                          ],
+                    Container(
+                      padding: const EdgeInsets.all(8.0),
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 213, 214, 239),
+                        borderRadius: BorderRadius.circular(16.0),
+                        border: Border.all(
+                          color: Color.fromARGB(255, 4, 6, 5),
+                          width: 2,
                         ),
-                        Column(
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                // Add your navigation logic here
-                              },
-                              child: GifImageWidget(
-                                gifImagePath: 'assets/images/attendance.gif',
-                                width: 50,
-                                height: 50,
-                                onTap: () {},
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Column(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const QRScanner(),
+                                    ),
+                                  );
+                                },
+                                child: GifImageWidget(
+                                  gifImagePath: 'assets/images/Qr.gif',
+                                  width: 50,
+                                  height: 50,
+                                  onTap: () {},
+                                ),
                               ),
-                            ),
-                            const Text(
-                              'Attendance',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 10,
-                                color: Color.fromARGB(255, 9, 10, 10),
+                              const Text(
+                                'QR Scanner',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 10,
+                                  color: Color.fromARGB(255, 7, 6, 9),
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const TimeTable(),
-                                  ),
-                                );
-                              },
-                              child: GifImageWidget(
-                                gifImagePath: 'assets/images/time table1.gif',
-                                width: 50,
-                                height: 50,
-                                onTap: () {},
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  // Add your navigation logic here
+                                },
+                                child: GifImageWidget(
+                                  gifImagePath: 'assets/images/attendance.gif',
+                                  width: 50,
+                                  height: 50,
+                                  onTap: () {},
+                                ),
                               ),
-                            ),
-                            const Text(
-                              'Academic Time Table',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 10,
-                                color: Color.fromARGB(255, 6, 9, 11),
+                              const Text(
+                                'Attendance',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 10,
+                                  color: Color.fromARGB(255, 9, 10, 10),
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                // Add your navigation logic here
-                              },
-                              child: GifImageWidget(
-                                gifImagePath: 'assets/images/payment1.gif',
-                                width: 50,
-                                height: 50,
-                                onTap: () {},
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const TimeTable(),
+                                    ),
+                                  );
+                                },
+                                child: GifImageWidget(
+                                  gifImagePath: 'assets/images/time table1.gif',
+                                  width: 50,
+                                  height: 50,
+                                  onTap: () {},
+                                ),
                               ),
-                            ),
-                            const Text(
-                              'Payments',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 10,
-                                color: Color.fromARGB(255, 3, 5, 7),
+                              const Text(
+                                'Academic Time Table',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 10,
+                                  color: Color.fromARGB(255, 6, 9, 11),
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  // Add your navigation logic here
+                                },
+                                child: GifImageWidget(
+                                  gifImagePath: 'assets/images/payment1.gif',
+                                  width: 50,
+                                  height: 50,
+                                  onTap: () {},
+                                ),
+                              ),
+                              const Text(
+                                'Payments',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 10,
+                                  color: Color.fromARGB(255, 3, 5, 7),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
 
                     const SizedBox(height: 20),
 
                     // Second Row
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Column(
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => EventsPage(),
-                                  ),
-                                );
-                              },
-                              child: GifImageWidget(
-                                gifImagePath: 'assets/images/events.gif',
-                                onTap: () {},
-                                height: 50,
-                                width: 50,
-                              ),
-                            ),
-                            const Text(
-                              'Events',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 10,
-                                color: Color.fromARGB(255, 10, 11, 11),
-                              ),
-                            ),
-                          ],
+                    Container(
+                      padding: const EdgeInsets.all(8.0),
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 213, 214, 239),
+                        borderRadius: BorderRadius.circular(16.0),
+                        border: Border.all(
+                          color: Color.fromARGB(255, 4, 4, 5),
+                          width: 2,
                         ),
-                        Column(
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                // Add your navigation logic here
-                              },
-                              child: GifImageWidget(
-                                gifImagePath: 'assets/images/transport.gif',
-                                onTap: () {},
-                                height: 50,
-                                width: 50,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Column(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => EventsPage(),
+                                    ),
+                                  );
+                                },
+                                child: GifImageWidget(
+                                  gifImagePath: 'assets/images/events.gif',
+                                  onTap: () {},
+                                  height: 50,
+                                  width: 50,
+                                ),
                               ),
-                            ),
-                            const Text(
-                              'Transport',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 10,
-                                color: Color.fromARGB(255, 2, 3, 4),
+                              const Text(
+                                'Events',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 10,
+                                  color: Color.fromARGB(255, 10, 11, 11),
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                // Add your navigation logic here
-                              },
-                              child: GifImageWidget(
-                                gifImagePath: 'assets/images/gpa cal.gif',
-                                onTap: () {},
-                                height: 50,
-                                width: 50,
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  // Add your navigation logic here
+                                },
+                                child: GifImageWidget(
+                                  gifImagePath: 'assets/images/transport.gif',
+                                  onTap: () {},
+                                  height: 50,
+                                  width: 50,
+                                ),
                               ),
-                            ),
-                            const Text(
-                              'GPA Calculator',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 10,
-                                color: Color.fromARGB(255, 9, 12, 14),
+                              const Text(
+                                'Transport',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 10,
+                                  color: Color.fromARGB(255, 2, 3, 4),
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                // Add your navigation logic here
-                              },
-                              child: GifImageWidget(
-                                gifImagePath: 'assets/images/result.gif',
-                                onTap: () {},
-                                height: 50,
-                                width: 50,
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  // Add your navigation logic here
+                                },
+                                child: GifImageWidget(
+                                  gifImagePath: 'assets/images/gpa cal.gif',
+                                  onTap: () {},
+                                  height: 50,
+                                  width: 50,
+                                ),
                               ),
-                            ),
-                            const Text(
-                              'Result',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 10,
-                                color: Color.fromARGB(255, 6, 7, 7),
+                              const Text(
+                                'GPA Calculator',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 10,
+                                  color: Color.fromARGB(255, 9, 12, 14),
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  // Add your navigation logic here
+                                },
+                                child: GifImageWidget(
+                                  gifImagePath: 'assets/images/result.gif',
+                                  onTap: () {},
+                                  height: 50,
+                                  width: 50,
+                                ),
+                              ),
+                              const Text(
+                                'Result',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 10,
+                                  color: Color.fromARGB(255, 6, 7, 7),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
 
                     // ... (other code)
+                    const SizedBox(
+                      height: 20,
+                    ),
 
                     // Lecture Details Container
                     const LectureDetailsContainer(
