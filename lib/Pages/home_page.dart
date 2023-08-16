@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color.fromARGB(255, 246, 245, 249),
+        backgroundColor: const Color.fromARGB(255, 246, 245, 249),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -19,12 +19,12 @@ class HomePage extends StatelessWidget {
               const SizedBox(height: 20),
               Container(
                 child: const CarouselWithIndicator(),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Color.fromARGB(255, 213, 214, 239),
-                  border: Border.all(
-                    color: Color.fromARGB(255, 6, 134, 247),
-                    width: 5,
-                  ),
+                  // border: Border.all(
+                  //   color: Color.fromARGB(255, 6, 134, 247),
+                  //   width: 5,
+                  // ),
                 ),
               ),
               const SizedBox(height: 20),
@@ -37,10 +37,10 @@ class HomePage extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(8.0),
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 213, 214, 239),
+                        color: const Color.fromARGB(255, 121, 246, 99),
                         borderRadius: BorderRadius.circular(16.0),
                         border: Border.all(
-                          color: Color.fromARGB(255, 4, 6, 5),
+                          color: const Color.fromARGB(255, 4, 6, 5),
                           width: 2,
                         ),
                       ),
@@ -159,10 +159,10 @@ class HomePage extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(8.0),
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 213, 214, 239),
+                        color: const Color.fromARGB(255, 121, 246, 99),
                         borderRadius: BorderRadius.circular(16.0),
                         border: Border.all(
-                          color: Color.fromARGB(255, 4, 4, 5),
+                          color: const Color.fromARGB(255, 4, 4, 5),
                           width: 2,
                         ),
                       ),
@@ -269,22 +269,82 @@ class HomePage extends StatelessWidget {
                         ],
                       ),
                     ),
-
-                    // ... (other code)
                     const SizedBox(
                       height: 20,
                     ),
 
-                    // Lecture Details Container
-                    const LectureDetailsContainer(
-                      startTime: '8:00 AM',
-                      endTime: '10:00 AM',
-                      lectureName: 'Mathematics',
-                      lectureHall: 'Room 201',
+                    // Additional Container with Related Text
+                    Container(
+                      alignment: Alignment.topLeft,
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 32, 246, 32),
+                        borderRadius: BorderRadius.circular(16.0),
+                        border: Border.all(
+                          color: const Color.fromARGB(255, 4, 4, 5),
+                          width: 2,
+                        ),
+                      ),
+                      padding: const EdgeInsets.all(10),
+                      margin: const EdgeInsets.only(right: 200),
+                      child: const Text(
+                        "How's Going Today?",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          color: Color.fromARGB(255, 1, 1, 1),
+                        ),
+                      ),
                     ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    // Lecture Details Container
+                    // First Lecture Details Container
+                    Container(
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 121, 246, 99),
+                        borderRadius: BorderRadius.circular(16.0),
+                        border: Border.all(
+                          color: const Color.fromARGB(255, 4, 4, 5),
+                          width: 2,
+                        ),
+                      ),
+                      padding: const EdgeInsets.all(5),
+
+                      // Set the background color to red
+                      child: Column(
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(top: 10),
+                            child: const LectureDetails(
+                              moduleName: 'MAD',
+                              moduleCode: 'SE303.3',
+                              hall: 'C2',
+                              time: '9.00AM-\n1.00PM',
+                            ),
+                          ),
+                          const SizedBox(
+                              height:
+                                  1), // Add spacing between the two LectureDetails
+                          Container(
+                            margin: const EdgeInsets.only(top: 10),
+                            child: const LectureDetails(
+                              moduleName: 'MAD',
+                              moduleCode: 'SE303.3',
+                              hall: 'C2',
+                              time: '2.00PM-\n5.00PM',
+                            ),
+                          ),
+                          const SizedBox(
+                              height:
+                                  10), // Add spacing between the two LectureDetails
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),
+              const SizedBox(height: 30),
             ],
           ),
         ),
@@ -296,7 +356,7 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 // Add your search functionality here
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Search icon pressed')),
+                  const SnackBar(content: Text('Search icon pressed')),
                 );
               },
             ),

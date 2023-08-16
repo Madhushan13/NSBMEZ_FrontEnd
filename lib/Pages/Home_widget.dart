@@ -43,7 +43,7 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicator> {
             height: imageHeight,
             autoPlay: true,
             enableInfiniteScroll: true, // Enable infinite scroll
-            autoPlayAnimationDuration: Duration(seconds: 3),
+            autoPlayAnimationDuration: const Duration(seconds: 3),
             enlargeCenterPage: true, // Set to true for full view
             viewportFraction: 0.5, // Adjust this value for spacing
             onPageChanged: (index, reason) =>
@@ -106,56 +106,120 @@ class GifImageWidget extends StatelessWidget {
   }
 }
 
-class LectureDetailsContainer extends StatelessWidget {
-  final String startTime;
-  final String endTime;
-  final String lectureName;
-  final String lectureHall;
+class LectureDetails extends StatelessWidget {
+  final String moduleName;
+  final String moduleCode;
+  final String hall;
+  final String time;
 
-  const LectureDetailsContainer({
-    Key? key,
-    required this.startTime,
-    required this.endTime,
-    required this.lectureName,
-    required this.lectureHall,
-  }) : super(key: key);
-
+  const LectureDetails({
+    required this.moduleName,
+    required this.moduleCode,
+    required this.hall,
+    required this.time,
+  });
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
-      margin: const EdgeInsets.symmetric(horizontal: 16),
+      margin: const EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.all(10.0),
       decoration: BoxDecoration(
-        color: Colors.grey[200],
-        borderRadius: BorderRadius.circular(20),
+        color: Color.fromARGB(255, 68, 147, 244),
+        borderRadius: BorderRadius.circular(16.0),
+        border: Border.all(
+          color: Color.fromARGB(255, 4, 4, 5),
+          width: 2,
+        ),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Text(
-            'Lecture Details',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Module Name',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  decoration: TextDecoration.underline,
+                  decorationThickness: 2.5,
+                  fontSize: 12,
+                  color: Color.fromARGB(255, 6, 7, 7),
+                ),
+              ),
+              Text(
+                'Module code',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  decoration: TextDecoration.underline,
+                  decorationThickness: 2.5,
+                  fontSize: 12,
+                  color: Color.fromARGB(255, 6, 7, 7),
+                ),
+              ),
+              Text(
+                'Hall',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  decoration: TextDecoration.underline,
+                  decorationThickness: 2.5,
+                  fontSize: 12,
+                  color: Color.fromARGB(255, 6, 7, 7),
+                ),
+              ),
+              Text(
+                'Time',
+                style: TextStyle(
+                  decoration: TextDecoration.underline,
+                  decorationThickness: 2.5,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12,
+                  color: Color.fromARGB(255, 6, 7, 7),
+                ),
+              ),
+            ],
           ),
-          SizedBox(height: 8),
-          Text(
-            'Start Time: $startTime',
-            style: TextStyle(fontSize: 16),
+          SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                moduleName,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12,
+                  color: Color.fromARGB(255, 6, 7, 7),
+                ),
+              ),
+              SizedBox(width: 40),
+              Text(
+                moduleCode,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12,
+                  color: Color.fromARGB(255, 6, 7, 7),
+                ),
+              ),
+              SizedBox(width: 0.5),
+              Text(
+                hall,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12,
+                  color: Color.fromARGB(255, 6, 7, 7),
+                ),
+              ),
+              Text(
+                time,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12,
+                  color: Color.fromARGB(255, 6, 7, 7),
+                ),
+              ),
+            ],
           ),
-          Text(
-            'End Time: $endTime',
-            style: TextStyle(fontSize: 16),
-          ),
-          Text(
-            'Lecture Name: $lectureName',
-            style: TextStyle(fontSize: 16),
-          ),
-          Text(
-            'Lecture Hall: $lectureHall',
-            style: TextStyle(fontSize: 16),
-          ),
+          SizedBox(height: 20),
         ],
       ),
     );
