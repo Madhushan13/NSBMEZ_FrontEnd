@@ -1,7 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'Pages/loading_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+      options: const FirebaseOptions(
+          apiKey: 'AIzaSyAQssJM7OZjnWoARUzqMJtnQzoU3ODtnFg',
+          appId: '1:81331791443:android:3a958bb3601fbc5dc908a6',
+          messagingSenderId: '81331791443',
+          projectId: 'nsbmez'));
   runApp(const MyApp());
 }
 

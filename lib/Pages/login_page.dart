@@ -1,10 +1,46 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/Pages/home_page.dart';
 import 'package:flutter_application/Pages/resetpw_page.dart';
 import 'package:flutter_application/Pages/signup_page.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+@override
+LoginPage createState() => LoginPage();
+
+class LoginPage extends StatefulWidget {
+  LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoinPageState();
+}
+
+class _LoinPageState extends State<LoginPage> {
+  bool _isPasswordVisible = false;
+
+  Future<User?> Signin(
+      {required String idcontroller, required String pwcontroller}) async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User? user;
+    try {
+      UserCredential userCredential = await auth.signInWithEmailAndPassword(
+          email: idcontroller, password: pwcontroller);
+      user = userCredential.user;
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => const HomePage()));
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      }
+    }
+    return user;
+  }
+
+  final idcontroller = TextEditingController();
+
+  final pwcontroller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +82,9 @@ class LoginPage extends StatelessWidget {
                         ),
                       ),
                       // Username
-                      const TextField(
+                      TextField(
+                        controller: idcontroller,
+                        obscureText: _isPasswordVisible,
                         decoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -70,8 +108,9 @@ class LoginPage extends StatelessWidget {
                       ),
 
                       // Password
-                      const TextField(
-                        obscureText: true,
+                      TextField(
+                        controller: pwcontroller,
+                        obscureText: _isPasswordVisible,
                         decoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -94,11 +133,10 @@ class LoginPage extends StatelessWidget {
 
                       // Sign In Button
                       ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const HomePage()));
+                        onPressed: () async {
+                          await Signin(
+                              idcontroller: idcontroller.text,
+                              pwcontroller: pwcontroller.text);
                         },
                         style: ElevatedButton.styleFrom(
                             fixedSize: const Size(500, 50),
