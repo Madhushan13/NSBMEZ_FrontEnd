@@ -19,6 +19,10 @@ class _LoginPageState extends State<LoginPage> {
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  String errorMessage = '';
+
+  bool authError = false;
+
   Future<void> signInWithEmailPassword() async {
     if (_formKey.currentState!.validate()) {
       FirebaseAuth auth = FirebaseAuth.instance;
@@ -31,13 +35,31 @@ class _LoginPageState extends State<LoginPage> {
           context,
           MaterialPageRoute(builder: (context) => const HomePage()),
         );
+        setState(() {
+          authError = false;
+        });
       } on FirebaseAuthException catch (e) {
-        if (e.code == 'user-not-found') {
-          print('No user found for that email.');
-        } else if (e.code == 'wrong-password') {
-          print('Wrong password provided for that user.');
+        String errorMessageText = '';
+        switch (e.code) {
+          case 'wrong-password':
+            errorMessageText = 'Invalid Password.';
+            break;
+          case 'user-not-found':
+            errorMessageText = 'Invalid Username';
+            break;
+          default:
+            errorMessageText = 'An error occurred. Please try again.';
         }
+        setState(() {
+          authError = true;
+          errorMessage = errorMessageText;
+        });
       }
+    } else {
+      setState(() {
+        authError = false;
+        errorMessage = '';
+      });
     }
   }
 
@@ -88,15 +110,7 @@ class _LoginPageState extends State<LoginPage> {
                         // Username/Email TextField
                         TextFormField(
                           controller: idController,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter your email.';
-                            }
-                            if (!value.contains('@') || !value.contains('.')) {
-                              return 'Please enter a valid email address.';
-                            }
-                            return null;
-                          },
+                          validator: validateEmail,
                           decoration: const InputDecoration(
                             enabledBorder: OutlineInputBorder(
                               borderRadius:
@@ -124,15 +138,7 @@ class _LoginPageState extends State<LoginPage> {
                         TextFormField(
                           controller: pwController,
                           obscureText: passwordToggle,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter your password.';
-                            }
-                            if (value.length < 6) {
-                              return 'Password must be at least 6 characters.';
-                            }
-                            return null;
-                          },
+                          validator: validatePW,
                           decoration: InputDecoration(
                             suffixIcon: InkWell(
                               onTap: () {
@@ -163,7 +169,16 @@ class _LoginPageState extends State<LoginPage> {
                             hintText: 'Password',
                           ),
                         ),
-                        const SizedBox(height: 25),
+                        SizedBox(height: 10),
+                        Center(
+                          child: Text(
+                            authError ? errorMessage : '',
+                            style: TextStyle(
+                                color: Colors
+                                    .red), // You can style the error message text here
+                          ),
+                        ),
+                        const SizedBox(height: 5),
                         // Sign In Button
                         ElevatedButton(
                           onPressed: signInWithEmailPassword,
@@ -242,4 +257,26 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+}
+
+String? validateEmail(String? formEmail) {
+  if (formEmail == null || formEmail.isEmpty) {
+    return 'Please enter your email.';
+  }
+  String pattern = r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$';
+  RegExp regex = RegExp(pattern);
+  if (!regex.hasMatch(formEmail)) {
+    return 'Please enter a valid email.';
+  }
+  return null;
+}
+
+String? validatePW(String? formEmail) {
+  if (formEmail == null || formEmail.isEmpty) {
+    return 'Please enter your password.';
+  }
+  if (formEmail.length < 6) {
+    return 'Password must be at least 6 characters.';
+  }
+  return null;
 }
