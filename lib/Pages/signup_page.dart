@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_application/Pages/login_page.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -121,6 +123,15 @@ class _SignupPageState extends State<SignupPage> {
   Widget _loginBtn() {
     return ElevatedButton(
       onPressed: () {
+        FirebaseAuth.instance
+            .createUserWithEmailAndPassword(
+                email: usernameController.text,
+                password: passwordController.text)
+            .then((value) => {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => LoginPage()))
+                });
+
         debugPrint("Username : ${usernameController.text}");
         debugPrint("Password : ${passwordController.text}");
       },
