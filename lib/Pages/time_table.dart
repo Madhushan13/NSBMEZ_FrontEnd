@@ -23,9 +23,8 @@ class TimeTable extends StatelessWidget {
 List<Appointment> getAppoinments() {
   List<Appointment> meetings = <Appointment>[];
   final DateTime today = DateTime.now();
-  final DateTime startTime =
-      DateTime(today.year, today.month, today.day, 0, 0, 0);
-  final DateTime endTime = startTime.add(const Duration(hours: 23));
+  final DateTime startTime = DateTime(today.year, today.month, today.day, 9, 0, 0); // Start at 9 am
+  final DateTime endTime = DateTime(today.year, today.month, today.day, 17, 0, 0); // End at 5 pm
 
   meetings.add(Appointment(
     startTime: startTime,
