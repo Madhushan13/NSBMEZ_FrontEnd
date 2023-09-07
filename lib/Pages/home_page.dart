@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/Pages/gpa_calculater.dart';
 import 'package:flutter_application/Pages/results_page.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'Home_widget.dart';
@@ -370,6 +371,14 @@ class HomePage extends StatelessWidget {
                               children: [
                                 GestureDetector(
                                   onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const GPACalculatorPage(),
+                                      ),
+                                    );
+
                                     // Add your navigation logic here
                                   },
                                   child: GifImageWidget(
