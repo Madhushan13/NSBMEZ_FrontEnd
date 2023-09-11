@@ -51,7 +51,7 @@ class _SignupPageState extends State<SignupPage> {
                       ),
                       // Username
                       TextField(
-                        controller: idcontroller,
+                        controller: usernameController,
                         decoration: const InputDecoration(
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -74,7 +74,6 @@ class _SignupPageState extends State<SignupPage> {
                         height: 30,
                       ),
                       TextField(
-                        controller: idcontroller,
                         decoration: const InputDecoration(
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -98,8 +97,7 @@ class _SignupPageState extends State<SignupPage> {
                       ),
                       // Password
                       TextField(
-                        controller: pwcontroller,
-                        obscureText: !isPasswordVisible,
+                        controller: passwordController,
                         decoration: const InputDecoration(
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -120,8 +118,7 @@ class _SignupPageState extends State<SignupPage> {
                       ),
                       const SizedBox(height: 25),
                       TextField(
-                        controller: idcontroller,
-                        obscureText: !isPasswordVisible,
+                        controller: passwordController,
                         decoration: const InputDecoration(
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -179,6 +176,21 @@ class _SignupPageState extends State<SignupPage> {
                       ),
                       ElevatedButton(
                         onPressed: () async {
+                          FirebaseAuth.instance
+                              .createUserWithEmailAndPassword(
+                                  email: usernameController.text,
+                                  password: passwordController.text)
+                              .then((value) => {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const LoginPage()))
+                                  });
+
+                          debugPrint("Username : ${usernameController.text}");
+                          debugPrint("Password : ${passwordController.text}");
+
                           // Handle the sign-up logic here
                         },
                         style: ElevatedButton.styleFrom(
