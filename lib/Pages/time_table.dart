@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
+import 'Home_widget.dart';
+
 class TimeTable extends StatelessWidget {
   const TimeTable({super.key});
 
@@ -15,6 +17,12 @@ class TimeTable extends StatelessWidget {
           //initialSelectedDate: DateTime(2023, 06, 05, 09, 00, 00),
           dataSource: MeetingDateSource(getAppoinments()),
         ),
+        bottomNavigationBar: CustomBottomNavigationBar(
+          currentIndex: 1, // Set the correct index for EventsPage
+          onTap: (index) {
+            // Handle bottom navigation bar tap event
+          },
+        ),
       ),
     );
   }
@@ -23,8 +31,10 @@ class TimeTable extends StatelessWidget {
 List<Appointment> getAppoinments() {
   List<Appointment> meetings = <Appointment>[];
   final DateTime today = DateTime.now();
-  final DateTime startTime = DateTime(today.year, today.month, today.day, 9, 0, 0); // Start at 9 am
-  final DateTime endTime = DateTime(today.year, today.month, today.day, 17, 0, 0); // End at 5 pm
+  final DateTime startTime =
+      DateTime(today.year, today.month, today.day, 9, 0, 0); // Start at 9 am
+  final DateTime endTime =
+      DateTime(today.year, today.month, today.day, 17, 0, 0); // End at 5 pm
 
   meetings.add(Appointment(
     startTime: startTime,

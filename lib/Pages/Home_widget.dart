@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class CarouselWithIndicator extends StatefulWidget {
@@ -124,17 +125,17 @@ class LectureDetails extends StatelessWidget {
       margin: const EdgeInsets.only(top: 10),
       padding: const EdgeInsets.all(10.0),
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 68, 147, 244),
+        color: const Color.fromARGB(255, 68, 147, 244),
         borderRadius: BorderRadius.circular(16.0),
         border: Border.all(
-          color: Color.fromARGB(255, 4, 4, 5),
+          color: const Color.fromARGB(255, 4, 4, 5),
           width: 2,
         ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
@@ -179,31 +180,31 @@ class LectureDetails extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 moduleName,
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 12,
                   color: Color.fromARGB(255, 6, 7, 7),
                 ),
               ),
-              SizedBox(width: 40),
+              const SizedBox(width: 40),
               Text(
                 moduleCode,
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 12,
                   color: Color.fromARGB(255, 6, 7, 7),
                 ),
               ),
-              SizedBox(width: 0.5),
+              const SizedBox(width: 0.5),
               Text(
                 hall,
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 12,
                   color: Color.fromARGB(255, 6, 7, 7),
@@ -211,7 +212,7 @@ class LectureDetails extends StatelessWidget {
               ),
               Text(
                 time,
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 12,
                   color: Color.fromARGB(255, 6, 7, 7),
@@ -219,8 +220,54 @@ class LectureDetails extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
         ],
+      ),
+    );
+  }
+}
+
+//bottom navigation Bar
+
+class CustomBottomNavigationBar extends StatelessWidget {
+  final int currentIndex;
+  final ValueChanged<int> onTap;
+
+  CustomBottomNavigationBar({
+    required this.currentIndex,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.white,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
+        child: GNav(
+          backgroundColor: Colors.white,
+          color: const Color.fromARGB(255, 35, 39, 249),
+          activeColor: const Color.fromARGB(255, 13, 236, 73),
+          tabBackgroundColor: Colors.grey.shade800,
+          gap: 8,
+          padding: const EdgeInsets.all(15),
+          tabs: const [
+            GButton(
+              icon: Icons.home,
+              text: 'Home',
+            ),
+            GButton(
+              icon: Icons.notifications,
+              text: 'Notifications',
+            ),
+            GButton(
+              icon: Icons.chat,
+              text: 'Chat',
+            ),
+          ],
+          selectedIndex: currentIndex,
+          onTabChange: onTap,
+        ),
       ),
     );
   }

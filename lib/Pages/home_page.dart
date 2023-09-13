@@ -1,47 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/Pages/gpa_calculater.dart';
 import 'package:flutter_application/Pages/results_page.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 import 'Home_widget.dart';
 import 'events_page.dart';
 import 'qr_scanner.dart';
 import 'time_table.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int currentIndex = 0;
+
+  void onTabTapped(int index) {
+    setState(() {
+      currentIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     double displayWidth = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
-        bottomNavigationBar: Container(
-          color: Colors.white,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
-            child: GNav(
-              backgroundColor: Colors.white,
-              color: Color.fromARGB(255, 35, 39, 249),
-              activeColor: Color.fromARGB(255, 13, 236, 73),
-              tabBackgroundColor: Colors.grey.shade800,
-              gap: 8,
-              padding: EdgeInsets.all(15),
-              tabs: [
-                GButton(
-                  icon: Icons.home,
-                  text: 'Home',
-                ),
-                GButton(
-                  icon: Icons.notifications,
-                  text: 'notifications',
-                ),
-                GButton(
-                  icon: Icons.chat,
-                  text: 'chat',
-                ),
-              ],
-            ),
-          ),
+        bottomNavigationBar: CustomBottomNavigationBar(
+          currentIndex: currentIndex,
+          onTap: onTabTapped,
         ),
         appBar: AppBar(
           automaticallyImplyLeading: false,

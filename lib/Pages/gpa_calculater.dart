@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 
+import 'Home_widget.dart';
+
 // Custom class to represent a subject
 class Subject {
   double? grade;
   double? credit;
 
-  Subject({this.grade = 4.0, this.credit = 3.0}); // Set default grade to 'A' (4.0) and credit to 3.0
+  Subject(
+      {this.grade = 4.0,
+      this.credit = 3.0}); // Set default grade to 'A' (4.0) and credit to 3.0
 }
 
 class GPACalculatorPage extends StatefulWidget {
@@ -17,10 +21,12 @@ class GPACalculatorPage extends StatefulWidget {
 
 class _GPACalculatorPageState extends State<GPACalculatorPage> {
   int currentSubject = 1; // Set the default subject value to 1
-  List<Subject> subjects = List.generate(100, (_) => Subject()); // Default to 'A' and 3.0 credits for 100 subjects
+  List<Subject> subjects = List.generate(
+      100, (_) => Subject()); // Default to 'A' and 3.0 credits for 100 subjects
 
   // Create a list of TextEditingController instances to control the credit text fields
-  List<TextEditingController> creditControllers = List.generate(100, (_) => TextEditingController(text: '3.0'));
+  List<TextEditingController> creditControllers =
+      List.generate(100, (_) => TextEditingController(text: '3.0'));
 
   double calculateGPA() {
     double totalGradePoints = 0;
@@ -106,7 +112,8 @@ class _GPACalculatorPageState extends State<GPACalculatorPage> {
                     Expanded(
                       flex: 2,
                       child: TextField(
-                        controller: creditControllers[i], // Use the respective controller
+                        controller: creditControllers[
+                            i], // Use the respective controller
                         keyboardType: TextInputType.number,
                         decoration: const InputDecoration(labelText: 'Credits'),
                         onChanged: (value) {
@@ -152,10 +159,17 @@ class _GPACalculatorPageState extends State<GPACalculatorPage> {
                 child: const Text('Calculate GPA'),
               ),
               const SizedBox(height: 10),
-              Text('Current Subject: $currentSubject'), // Display current subject counter
+              Text(
+                  'Current Subject: $currentSubject'), // Display current subject counter
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: CustomBottomNavigationBar(
+        currentIndex: 1, // Set the correct index for EventsPage
+        onTap: (index) {
+          // Handle bottom navigation bar tap event
+        },
       ),
     );
   }

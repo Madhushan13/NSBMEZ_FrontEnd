@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 //import 'package:qr_scanner/qr_scanner.dart';
 
+import 'Home_widget.dart';
 import 'qr_results_screen.dart';
 
 const bgColor = Color.fromARGB(255, 255, 255, 255);
@@ -24,6 +25,12 @@ class _QRScannerState extends State<QRScanner> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: CustomBottomNavigationBar(
+        currentIndex: 0, // Set the correct index for QR Scanner page
+        onTap: (index) {
+          // Handle bottom navigation bar tap event
+        },
+      ),
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,

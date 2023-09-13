@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
+import 'Home_widget.dart';
+
 class EventsPage extends StatelessWidget {
   // Sample event data
   final List<Map<String, String>> events = [
     {
-        'date': '24',
+      'date': '24',
       'month': 'Nov',
       'year': '2023',
       'title': 'ICOBI 2023',
       'description':
-                    'ICOBI 2023 is the sixth International Conference on Business Innovation that will be held at NSBM Green University of Sri Lanka. ICOBI has been held annually since 2018, structured each year on an impactful and timely theme related to Business Innovation and Sustainable Development',
-
-
+          'ICOBI 2023 is the sixth International Conference on Business Innovation that will be held at NSBM Green University of Sri Lanka. ICOBI has been held annually since 2018, structured each year on an impactful and timely theme related to Business Innovation and Sustainable Development',
       'imageUrl': 'assets/images/icobievent-jpg-1.png',
     },
     {
@@ -30,7 +30,6 @@ class EventsPage extends StatelessWidget {
       'title': '"Green Base" night camp',
       'description':
           '“Green Base”, the night camp organised by the Association of Business Management had its 2023 chapter which continued for two successful days on 28th and 29th July 2023 at NSBM Grounds.',
-          
       'imageUrl': 'assets/images/Green Base night camp.jpg',
     },
     // Add more sample events here
@@ -76,6 +75,12 @@ class EventsPage extends StatelessWidget {
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: CustomBottomNavigationBar(
+        currentIndex: 2, // Set the correct index for EventsPage
+        onTap: (index) {
+          // Handle bottom navigation bar tap event
+        },
       ),
     );
   }
