@@ -43,6 +43,17 @@ class _GPACalculatorPageState extends State<GPACalculatorPage> {
     }
   }
 
+  // Function to remove a subject
+  void removeSubject(int index) {
+    if (currentSubject > 1) {
+      setState(() {
+        currentSubject--;
+        subjects.removeAt(index);
+        creditControllers.removeAt(index);
+      });
+    }
+  }
+
   @override
   void dispose() {
     // Dispose of the TextEditingController instances to avoid memory leaks
@@ -104,6 +115,12 @@ class _GPACalculatorPageState extends State<GPACalculatorPage> {
                           });
                         },
                       ),
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.remove),
+                      onPressed: () {
+                        removeSubject(i);
+                      },
                     ),
                     IconButton(
                       icon: const Icon(Icons.add),
