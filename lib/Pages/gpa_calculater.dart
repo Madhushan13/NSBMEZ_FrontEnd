@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
 
+// Custom class to represent a subject
+class Subject {
+  double? grade;
+  double? credit;
+
+  Subject({this.grade = 4.0, this.credit = 3.0}); // Set default grade to 'A' (4.0) and credit to 3.0
+}
+
 class GPACalculatorPage extends StatefulWidget {
   const GPACalculatorPage({super.key});
 
@@ -8,19 +16,40 @@ class GPACalculatorPage extends StatefulWidget {
 }
 
 class _GPACalculatorPageState extends State<GPACalculatorPage> {
-  List<double?> grades = List.generate(10, (_) => 4.0); // Default to 'A'
-  List<double?> credits = List.generate(10, (_) => 3.0); // Default to 3 credits
+  int currentSubject = 1; // Set the default subject value to 1
+  List<Subject> subjects = List.generate(100, (_) => Subject()); // Default to 'A' and 3.0 credits for 100 subjects
+
+  // Create a list of TextEditingController instances to control the credit text fields
+  List<TextEditingController> creditControllers = List.generate(100, (_) => TextEditingController(text: '3.0'));
 
   double calculateGPA() {
     double totalGradePoints = 0;
     double totalCredits = 0;
 
-    for (int i = 0; i < 10; i++) {
-      totalGradePoints += (grades[i] ?? 0) * (credits[i] ?? 0);
-      totalCredits += credits[i] ?? 0;
+    for (int i = 0; i < currentSubject; i++) {
+      totalGradePoints += (subjects[i].grade ?? 0) * (subjects[i].credit ?? 0);
+      totalCredits += subjects[i].credit ?? 0;
     }
 
     return totalCredits == 0 ? 0 : totalGradePoints / totalCredits;
+  }
+
+  // Function to add a new subject
+  void addSubject() {
+    if (currentSubject < 100) {
+      setState(() {
+        currentSubject++;
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    // Dispose of the TextEditingController instances to avoid memory leaks
+    for (final controller in creditControllers) {
+      controller.dispose();
+    }
+    super.dispose();
   }
 
   @override
@@ -36,19 +65,19 @@ class _GPACalculatorPageState extends State<GPACalculatorPage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const Text(
-                'Enter Grades and Credits for 10 Subjects',
+                'Enter Grades and Credits in Subjects',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              for (int i = 0; i < 10; i++)
+              for (int i = 0; i < currentSubject; i++)
                 Row(
                   children: [
                     Expanded(
                       flex: 3,
                       child: DropdownButton<double?>(
-                        value: grades[i],
+                        value: subjects[i].grade,
                         onChanged: (value) {
                           setState(() {
-                            grades[i] = value;
+                            subjects[i].grade = value;
                           });
                         },
                         items: const [
@@ -66,14 +95,21 @@ class _GPACalculatorPageState extends State<GPACalculatorPage> {
                     Expanded(
                       flex: 2,
                       child: TextField(
+                        controller: creditControllers[i], // Use the respective controller
                         keyboardType: TextInputType.number,
                         decoration: const InputDecoration(labelText: 'Credits'),
                         onChanged: (value) {
                           setState(() {
-                            credits[i] = double.tryParse(value) ?? 0;
+                            subjects[i].credit = double.tryParse(value) ?? 0;
                           });
                         },
                       ),
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.add),
+                      onPressed: () {
+                        addSubject();
+                      },
                     ),
                   ],
                 ),
@@ -98,6 +134,8 @@ class _GPACalculatorPageState extends State<GPACalculatorPage> {
                 },
                 child: const Text('Calculate GPA'),
               ),
+              const SizedBox(height: 10),
+              Text('Current Subject: $currentSubject'), // Display current subject counter
             ],
           ),
         ),
