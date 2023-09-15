@@ -246,9 +246,9 @@ class CustomBottomNavigationBar extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
         child: GNav(
           backgroundColor: Colors.white,
-          color: const Color.fromARGB(255, 35, 39, 249),
-          activeColor: const Color.fromARGB(255, 13, 236, 73),
-          tabBackgroundColor: Colors.grey.shade800,
+          color: Color.fromARGB(255, 56, 144, 76),
+          activeColor: Color.fromARGB(255, 255, 255, 255),
+          tabBackgroundColor: Color.fromARGB(255, 56, 144, 76),
           gap: 8,
           padding: const EdgeInsets.all(15),
           tabs: const [
