@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/Pages/gpa_calculater.dart';
+import 'package:flutter_application/Pages/login_page.dart';
+import 'package:flutter_application/Pages/payment_details.dart';
 import 'package:flutter_application/Pages/results_page.dart';
 import 'Home_widget.dart';
 import 'events_page.dart';
@@ -136,6 +138,12 @@ class _HomePageState extends State<HomePage> {
                   leading: const Icon(Icons.logout),
                   title: const Text('Logout'),
                   onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginPage(),
+                      ),
+                    );
                     // Add your logout navigation logic here
                   },
                 ),
@@ -265,6 +273,13 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 GestureDetector(
                                   onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const Online_Payment(),
+                                      ),
+                                    );
                                     // Add your navigation logic here
                                   },
                                   child: GifImageWidget(

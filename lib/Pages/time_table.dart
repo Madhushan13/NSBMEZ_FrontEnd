@@ -34,12 +34,12 @@ List<Appointment> getAppoinments() {
   final DateTime startTime =
       DateTime(today.year, today.month, today.day, 9, 0, 0); // Start at 9 am
   final DateTime endTime =
-      DateTime(today.year, today.month, today.day, 17, 0, 0); // End at 5 pm
+      DateTime(today.year, today.month, today.day, 12, 0, 0); // End at 5 pm
 
   meetings.add(Appointment(
     startTime: startTime,
     endTime: endTime,
-    subject: 'Poya Day',
+    subject: 'MAD -Mobile Application Development',
     color: Colors.yellow,
     recurrenceRule: 'FREQ=DAILY;INTERVAL=1;COUNT=10',
   ));
