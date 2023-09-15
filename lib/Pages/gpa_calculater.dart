@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'Home_widget.dart';
+import 'home_page.dart';
 
 // Custom class to represent a subject
 class Subject {
@@ -166,9 +167,15 @@ class _GPACalculatorPageState extends State<GPACalculatorPage> {
         ),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(
-        currentIndex: 1, // Set the correct index for EventsPage
+        currentIndex: 2, // Set the correct index for EventsPage
         onTap: (index) {
           // Handle bottom navigation bar tap event
+          if (index == 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const HomePage()),
+            );
+          }
         },
       ),
     );

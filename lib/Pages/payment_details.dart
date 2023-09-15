@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
+import 'Home_widget.dart';
+import 'home_page.dart';
+
 // ignore: camel_case_types
-class Online_Payment extends StatelessWidget{
+class Online_Payment extends StatelessWidget {
   const Online_Payment({super.key});
 
-   @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -26,7 +29,7 @@ class Online_Payment extends StatelessWidget{
               ),
             ),
           ),
-            const SizedBox(height: 16.0),
+          const SizedBox(height: 16.0),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -42,9 +45,7 @@ class Online_Payment extends StatelessWidget{
                   const TextFieldItem(label: 'Currency'),
                   const SizedBox(height: 16.0),
                   ElevatedButton(
-                    onPressed: () {
-                      
-                    },
+                    onPressed: () {},
                     child: const Text('Next'),
                   ),
                 ],
@@ -52,6 +53,18 @@ class Online_Payment extends StatelessWidget{
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: CustomBottomNavigationBar(
+        currentIndex: 2, // Set the correct index for EventsPage
+        onTap: (index) {
+          // Handle bottom navigation bar tap event
+          if (index == 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const HomePage()),
+            );
+          }
+        },
       ),
     );
   }
@@ -78,8 +91,6 @@ class TextFieldItem extends StatelessWidget {
           ),
         ],
       ),
-
-      );
-
-}
+    );
+  }
 }

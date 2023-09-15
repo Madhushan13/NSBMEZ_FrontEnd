@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/Pages/home_page.dart';
 
 import 'Home_widget.dart';
 
@@ -80,6 +81,12 @@ class EventsPage extends StatelessWidget {
         currentIndex: 2, // Set the correct index for EventsPage
         onTap: (index) {
           // Handle bottom navigation bar tap event
+          if (index == 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const HomePage()),
+            );
+          }
         },
       ),
     );

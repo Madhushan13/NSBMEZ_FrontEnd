@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 import 'Home_widget.dart';
+import 'home_page.dart';
 
 class TimeTable extends StatelessWidget {
   const TimeTable({super.key});
@@ -18,9 +19,15 @@ class TimeTable extends StatelessWidget {
           dataSource: MeetingDateSource(getAppoinments()),
         ),
         bottomNavigationBar: CustomBottomNavigationBar(
-          currentIndex: 1, // Set the correct index for EventsPage
+          currentIndex: 2, // Set the correct index for EventsPage
           onTap: (index) {
             // Handle bottom navigation bar tap event
+            if (index == 0) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const HomePage()),
+              );
+            }
           },
         ),
       ),

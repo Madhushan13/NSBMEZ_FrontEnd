@@ -4,6 +4,7 @@ import 'package:mobile_scanner/mobile_scanner.dart';
 //import 'package:qr_scanner/qr_scanner.dart';
 
 import 'Home_widget.dart';
+import 'home_page.dart';
 import 'qr_results_screen.dart';
 
 const bgColor = Color.fromARGB(255, 255, 255, 255);
@@ -26,9 +27,15 @@ class _QRScannerState extends State<QRScanner> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: CustomBottomNavigationBar(
-        currentIndex: 0, // Set the correct index for QR Scanner page
+        currentIndex: 2, // Set the correct index for EventsPage
         onTap: (index) {
           // Handle bottom navigation bar tap event
+          if (index == 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const HomePage()),
+            );
+          }
         },
       ),
       backgroundColor: Colors.white,
