@@ -43,6 +43,7 @@ dependencies:
   syncfusion_flutter_calendar: ^22.2.7
   firebase_core: ^2.15.1
   firebase_auth: ^4.7.3
+  google_maps_flutter: ^2.5.0
 
 dev_dependencies:
   flutter_test:
