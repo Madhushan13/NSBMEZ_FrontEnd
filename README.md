@@ -30,7 +30,6 @@ This project is the collective effort of the following contributors:
 - [M.A.Sriyanjith](https://github.com/contributor1)
 - [W.A.T.Lankathilaka](https://github.com/contributor2)
 - [R.M.M.Deshpriya](https://github.com/contributor3)
-- [P.D Maduranga](https://github.com/contributor3)
 - [E.V.P Dulakshitha](https://github.com/contributor3)
 - [D.K Jayalal](https://github.com/contributor3)
 - [K.P.H.T. Pathirana](https://github.com/contributor3)
