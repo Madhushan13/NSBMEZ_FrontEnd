@@ -128,7 +128,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             fillColor: Color(0xFFBAD3C8),
                             filled: true,
-                            hintText: 'Username',
+                            hintText: 'Student Mail',
                           ),
                         ),
                         const SizedBox(
@@ -169,11 +169,11 @@ class _LoginPageState extends State<LoginPage> {
                             hintText: 'Password',
                           ),
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Center(
                           child: Text(
                             authError ? errorMessage : '',
-                            style: TextStyle(
+                            style: const TextStyle(
                                 color: Colors
                                     .red), // You can style the error message text here
                           ),
@@ -271,11 +271,11 @@ String? validateEmail(String? formEmail) {
   return null;
 }
 
-String? validatePW(String? formEmail) {
-  if (formEmail == null || formEmail.isEmpty) {
+String? validatePW(String? formPassword) {
+  if (formPassword == null || formPassword.isEmpty) {
     return 'Please enter your password.';
   }
-  if (formEmail.length < 6) {
+  if (formPassword.length < 6) {
     return 'Password must be at least 6 characters.';
   }
   return null;
