@@ -31,3 +31,65 @@ class OrderTrackingPageState extends State<BusTrackingPage> {
     );
   }
 }
+
+// ignore: camel_case_types
+class CustomBottomNavigationBar extends StatelessWidget {
+  final int currentIndex;
+  final ValueChanged<int> onTap;
+
+  CustomBottomNavigationBar({
+    required this.currentIndex,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.white,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            IconButton(
+              onPressed: () {
+                onTap(0);
+              },
+              icon: Icon(
+                Icons.home,
+                color: currentIndex == 0 ? Colors.blue : Colors.grey,
+              ),
+            ),
+            IconButton(
+              onPressed: () {
+                onTap(1);
+              },
+              icon: Icon(
+                Icons.event,
+                color: currentIndex == 1 ? Colors.blue : Colors.grey,
+              ),
+            ),
+            IconButton(
+              onPressed: () {
+                onTap(2);
+              },
+              icon: Icon(
+                Icons.payment,
+                color: currentIndex == 2 ? Colors.blue : Colors.grey,
+              ),
+            ),
+            IconButton(
+              onPressed: () {
+                onTap(3);
+              },
+              icon: Icon(
+                Icons.track_changes,
+                color: currentIndex == 3 ? Colors.blue : Colors.grey,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
