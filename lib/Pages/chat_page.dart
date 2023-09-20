@@ -1,28 +1,27 @@
 import 'package:flutter/material.dart';
-
-class ChatPopup extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Chat Popup Example'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return ChatDialog();
-              },
-            );
-          },
-          child: Text('Open Chat Popup'),
-        ),
-      ),
-    );
-  }
-}
+// class ChatPopup extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('Chat Popup Example'),
+//       ),
+//       body: Center(
+//         child: ElevatedButton(
+//           onPressed: () {
+//             showDialog(
+//               context: context,
+//               builder: (BuildContext context) {
+//                 return ChatDialog();
+//               },
+//             );
+//           },
+//           child: Text('Open Chat Popup'),
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 class ChatDialog extends StatelessWidget {
   @override
