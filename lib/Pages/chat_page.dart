@@ -1,44 +1,61 @@
 import 'package:flutter/material.dart';
 
-class ChatScreen extends StatelessWidget {
+class ChatPopup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chat Popup'),
+        title: Text('Chat Popup Example'),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView(
-              children: [
-                ChatMessage(isMe: true, text: 'Hello!'),
-                ChatMessage(isMe: false, text: 'Hi there!'),
-                ChatMessage(isMe: true, text: 'How are you?'),
-              ],
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return ChatDialog();
+              },
+            );
+          },
+          child: Text('Open Chat Popup'),
+        ),
+      ),
+    );
+  }
+}
+
+class ChatDialog extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text('Chat Popup'),
+      content: Container(
+        width: MediaQuery.of(context).size.width * 0.7,
+        height: MediaQuery.of(context).size.height * 0.5,
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView(
+                children: [
+                  ChatMessage(isMe: true, text: 'Hello!'),
+                  ChatMessage(isMe: false, text: 'Hi there!'),
+                  ChatMessage(isMe: true, text: 'How are you?'),
+                ],
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Type a message...',
-                    ),
-                  ),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    // Handle sending message here
-                  },
-                  child: Text('Send'),
-                ),
-              ],
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Type a message...',
+              ),
             ),
-          ),
-        ],
+            ElevatedButton(
+              onPressed: () {
+                // Handle sending message here
+              },
+              child: Text('Send'),
+            ),
+          ],
+        ),
       ),
     );
   }

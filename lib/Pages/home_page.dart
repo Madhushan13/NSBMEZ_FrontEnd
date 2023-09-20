@@ -352,18 +352,17 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 GestureDetector(
                                   onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => ChatDialog(),
+                                      ),
+                                    );
                                     // Add your navigation logic here
                                   },
                                   child: GifImageWidget(
                                     gifImagePath: 'assets/images/transport.gif',
-                                    onTap: () {
-                                      // Navigator.push(
-                                      //   context,
-                                      //   MaterialPageRoute(
-                                      //     builder: (context) => ChatScreen(),
-                                      //   ),
-                                      // );
-                                    },
+                                    onTap: () {},
                                     height: 50,
                                     width: 50,
                                   ),
