@@ -4,6 +4,7 @@ import 'package:flutter_application/Pages/login_page.dart';
 import 'package:flutter_application/Pages/payment_details.dart';
 import 'package:flutter_application/Pages/results_page.dart';
 import 'Home_widget.dart';
+import 'chat_page.dart';
 import 'events_page.dart';
 import 'qr_scanner.dart';
 import 'time_table.dart';
@@ -355,7 +356,14 @@ class _HomePageState extends State<HomePage> {
                                   },
                                   child: GifImageWidget(
                                     gifImagePath: 'assets/images/transport.gif',
-                                    onTap: () {},
+                                    onTap: () {
+                                      // Navigator.push(
+                                      //   context,
+                                      //   MaterialPageRoute(
+                                      //     builder: (context) => ChatScreen(),
+                                      //   ),
+                                      // );
+                                    },
                                     height: 50,
                                     width: 50,
                                   ),
