@@ -45,14 +45,14 @@ class _SignupPageState extends State<SignupPage> {
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20)),
                 child: Container(
-                  color: Color.fromARGB(230, 121, 196, 120),
+                  color: const Color.fromARGB(230, 121, 196, 120),
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         const Padding(
-                          padding: EdgeInsets.only(bottom: 20.0),
+                          padding: EdgeInsets.only(bottom: 25.0),
                           child: Text(
                             'SignUp',
                             style: TextStyle(
@@ -86,7 +86,7 @@ class _SignupPageState extends State<SignupPage> {
                         ),
 
                         const SizedBox(
-                          height: 30,
+                          height: 25,
                         ),
                         // Password
                         TextFormField(
@@ -160,7 +160,7 @@ class _SignupPageState extends State<SignupPage> {
                           ),
                         ),
                         const SizedBox(
-                          height: 30,
+                          height: 25,
                         ),
                         Center(
                           child: Text(
@@ -227,7 +227,7 @@ class _SignupPageState extends State<SignupPage> {
                           ),
                         ),
 
-                        const SizedBox(height: 10),
+                        const SizedBox(height: 20),
                         GestureDetector(
                           onTap: () {
                             // Handle forgot password logic here
@@ -241,34 +241,37 @@ class _SignupPageState extends State<SignupPage> {
                           ),
                         ),
                         const Spacer(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Text(
-                              'Don\'t have an account? ',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                              ),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const LoginPage(),
-                                  ),
-                                );
-                              },
-                              child: const Text(
-                                'Sign In',
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 35.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                'Don\'t have an account? ',
                                 style: TextStyle(
+                                  color: Colors.white,
                                   fontSize: 18,
-                                  color: Colors.blue,
                                 ),
                               ),
-                            ),
-                          ],
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const LoginPage(),
+                                    ),
+                                  );
+                                },
+                                child: const Text(
+                                  'Sign In',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: Colors.blue,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
@@ -285,12 +288,12 @@ class _SignupPageState extends State<SignupPage> {
 
 String? validateEmail(String? formEmail) {
   if (formEmail == null || formEmail.isEmpty) {
-    return 'Please enter your Student ID';
+    return 'Please enter your student email';
   }
   String pattern = r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$';
   RegExp regex = RegExp(pattern);
   if (!regex.hasMatch(formEmail)) {
-    return 'Please enter a valid Student ID';
+    return 'Please enter a valid student email';
   }
   return null;
 }

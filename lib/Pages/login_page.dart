@@ -66,12 +66,13 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: Form(
         key: _formKey,
         child: Column(
           children: [
             Expanded(
-              flex: 5,
+              flex: 3,
               child: Center(
                 child: FractionallySizedBox(
                   widthFactor: 0.7,
@@ -84,169 +85,181 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             Expanded(
-              flex: 8,
+              flex: 4,
               child: ClipRRect(
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(20),
                   topRight: Radius.circular(20),
                 ),
                 child: Container(
-                  color: Color.fromARGB(230, 121, 196, 120),
+                  color: const Color.fromARGB(230, 121, 196, 120),
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        const Padding(
-                          padding: EdgeInsets.only(bottom: 20.0),
-                          child: Text(
-                            'LOGIN',
-                            style: TextStyle(
-                              fontSize: 30,
-                              color: Color.fromARGB(255, 15, 60, 36),
-                            ),
-                          ),
-                        ),
-                        // Username/Email TextField
-                        TextFormField(
-                          controller: idController,
-                          validator: validateEmail,
-                          decoration: const InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                              borderSide: BorderSide(
-                                color: Color(0xFFBAD3C8),
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                              borderSide: BorderSide(
-                                color: Colors.black,
-                              ),
-                            ),
-                            fillColor: Color(0xFFBAD3C8),
-                            filled: true,
-                            hintText: 'Student Mail',
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        // Password TextField
-                        TextFormField(
-                          controller: pwController,
-                          obscureText: passwordToggle,
-                          validator: validatePW,
-                          decoration: InputDecoration(
-                            suffixIcon: InkWell(
-                              onTap: () {
-                                setState(() {
-                                  passwordToggle = !passwordToggle;
-                                });
-                              },
-                              child: Icon(passwordToggle
-                                  ? Icons.visibility
-                                  : Icons.visibility_off),
-                            ),
-                            enabledBorder: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                              borderSide: BorderSide(
-                                color: Color(0xFFBAD3C8),
-                              ),
-                            ),
-                            focusedBorder: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                              borderSide: BorderSide(
-                                color: Colors.black,
-                              ),
-                            ),
-                            fillColor: const Color(0xFFBAD3C8),
-                            filled: true,
-                            hintText: 'Password',
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                        Center(
-                          child: Text(
-                            authError ? errorMessage : '',
-                            style: const TextStyle(
-                                color: Colors
-                                    .red), // You can style the error message text here
-                          ),
-                        ),
-                        const SizedBox(height: 5),
-                        // Sign In Button
-                        ElevatedButton(
-                          onPressed: signInWithEmailPassword,
-                          style: ElevatedButton.styleFrom(
-                            fixedSize: const Size(500, 50),
-                            backgroundColor: Colors.black,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                          child: const Text(
-                            'Sign In',
-                            style: TextStyle(fontSize: 18),
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                        // Forgot Password
-                        GestureDetector(
-                          onTap: () {
-                            // FORGOT PW LINK
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const ResetPWPage(),
-                              ),
-                            );
-                          },
-                          child: const Text(
-                            'Forgot Password?',
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.blue,
-                            ),
-                          ),
-                        ),
-                        const Spacer(),
-                        // Sign Up
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Text(
-                              'Don\'t have an account? ',
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.only(bottom: 20.0),
+                            child: Text(
+                              'LOGIN',
                               style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
+                                fontSize: 30,
+                                color: Color.fromARGB(255, 15, 60, 36),
                               ),
                             ),
-                            GestureDetector(
-                              onTap: () {
-                                // SIGN UP LINK
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const SignupPage(),
-                                  ),
-                                );
-                              },
+                          ),
+                          // Username/Email TextField
+                          TextFormField(
+                            controller: idController,
+                            validator: validateEmail,
+                            decoration: const InputDecoration(
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                  color: Color(0xFFBAD3C8),
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                  color: Colors.black,
+                                ),
+                              ),
+                              fillColor: Color(0xFFBAD3C8),
+                              filled: true,
+                              hintText: 'Student Mail',
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 25,
+                          ),
+                          // Password TextField
+                          TextFormField(
+                            controller: pwController,
+                            obscureText: passwordToggle,
+                            validator: validatePW,
+                            decoration: InputDecoration(
+                              suffixIcon: InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    passwordToggle = !passwordToggle;
+                                  });
+                                },
+                                child: Icon(passwordToggle
+                                    ? Icons.visibility
+                                    : Icons.visibility_off),
+                              ),
+                              enabledBorder: const OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                  color: Color(0xFFBAD3C8),
+                                ),
+                              ),
+                              focusedBorder: const OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                  color: Colors.black,
+                                ),
+                              ),
+                              fillColor: const Color(0xFFBAD3C8),
+                              filled: true,
+                              hintText: 'Password',
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Center(
+                            child: Text(
+                              authError ? errorMessage : '',
+                              style: const TextStyle(
+                                  color: Colors
+                                      .red), // You can style the error message text here
+                            ),
+                          ),
+
+                          // Sign In Button
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: ElevatedButton(
+                              onPressed: signInWithEmailPassword,
+                              style: ElevatedButton.styleFrom(
+                                fixedSize: const Size(500, 50),
+                                backgroundColor: Colors.black,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
                               child: const Text(
-                                'Sign Up',
+                                'Sign In',
+                                style: TextStyle(fontSize: 18),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 15),
+                          // Forgot Password
+                          GestureDetector(
+                            onTap: () {
+                              // FORGOT PW LINK
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const ResetPWPage(),
+                                ),
+                              );
+                            },
+                            child: const Padding(
+                              padding: EdgeInsets.only(bottom: 8.0),
+                              child: Text(
+                                'Forgot Password?',
                                 style: TextStyle(
                                   fontSize: 18,
                                   color: Colors.blue,
                                 ),
                               ),
                             ),
-                          ],
-                        ),
-                      ],
+                          ),
+
+                          // Sign Up
+                          Padding(
+                            padding: const EdgeInsets.only(top: 20.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Text(
+                                  'Don\'t have an account? ',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    // SIGN UP LINK
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const SignupPage(),
+                                      ),
+                                    );
+                                  },
+                                  child: const Text(
+                                    'Sign Up',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: Colors.blue,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
