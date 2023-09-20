@@ -3,7 +3,6 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'attendance_utils.dart';
 
-
 class AttendanceScreen extends StatelessWidget {
   const AttendanceScreen({super.key});
 
@@ -19,7 +18,6 @@ class AttendanceScreen extends StatelessWidget {
     );
   }
 }
-
 
 class SubjectList extends StatelessWidget {
   const SubjectList({super.key});
@@ -40,7 +38,8 @@ class SubjectList extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => SubjectAttendanceDetails(subjectIndex: subjectIndex1),
+                    builder: (context) =>
+                        SubjectAttendanceDetails(subjectIndex: subjectIndex1),
                   ),
                 );
               },
@@ -51,7 +50,8 @@ class SubjectList extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => SubjectAttendanceDetails(subjectIndex: subjectIndex2),
+                    builder: (context) =>
+                        SubjectAttendanceDetails(subjectIndex: subjectIndex2),
                   ),
                 );
               },
@@ -69,7 +69,8 @@ class SubjectCard extends StatelessWidget {
   final double attendancePercentage;
 
   SubjectCard({super.key, required this.subjectIndex})
-  : attendancePercentage = AttendanceUtils.calculateTotalAttendancePercentage(subjectIndex);
+      : attendancePercentage =
+            AttendanceUtils.calculateTotalAttendancePercentage(subjectIndex);
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +86,7 @@ class SubjectCard extends StatelessWidget {
               style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16.0),
-            CircularPercentIndicator( 
+            CircularPercentIndicator(
               radius: 100.0,
               lineWidth: 8.0,
               percent: attendancePercentage / 100,
@@ -102,7 +103,7 @@ class SubjectCard extends StatelessWidget {
                   ),
                 ],
               ),
-              progressColor: const Color.fromARGB(255, 76, 175, 120),
+              progressColor: Color.fromARGB(255, 27, 206, 39),
             ),
           ],
         ),
@@ -111,7 +112,6 @@ class SubjectCard extends StatelessWidget {
   }
 }
 
-
 class SubjectAttendanceDetails extends StatelessWidget {
   final int subjectIndex;
 
@@ -119,7 +119,8 @@ class SubjectAttendanceDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double totalAttendancePercentage = AttendanceUtils.calculateTotalAttendancePercentage(subjectIndex);
+    final double totalAttendancePercentage =
+        AttendanceUtils.calculateTotalAttendancePercentage(subjectIndex);
 
     return Scaffold(
       appBar: AppBar(
@@ -133,7 +134,8 @@ class SubjectAttendanceDetails extends StatelessWidget {
             children: <Widget>[
               Text(
                 'Attendance Details for Subject $subjectIndex',
-                style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 20),
               DataTable(
@@ -151,7 +153,7 @@ class SubjectAttendanceDetails extends StatelessWidget {
                 rows: List<DataRow>.generate(
                   15,
                   (index) {
-                    final bool isPresent =index % 3 == 0;
+                    final bool isPresent = index % 3 == 0;
                     final String date = 'Day ${index + 1}';
                     final String lecture = 'Lecture ${index + 1}';
                     final String status = isPresent ? 'Present' : 'Absent';
@@ -168,7 +170,8 @@ class SubjectAttendanceDetails extends StatelessWidget {
               const SizedBox(height: 20),
               Text(
                 'Total Attendance Percentage: ${totalAttendancePercentage.toStringAsFixed(1)}%',
-                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ],
           ),
@@ -176,5 +179,4 @@ class SubjectAttendanceDetails extends StatelessWidget {
       ),
     );
   }
-
 }

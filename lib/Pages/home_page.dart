@@ -4,6 +4,7 @@ import 'package:flutter_application/Pages/login_page.dart';
 import 'package:flutter_application/Pages/payment_details.dart';
 import 'package:flutter_application/Pages/results_page.dart';
 import 'Home_widget.dart';
+import 'attendance.dart';
 import 'bus_tracking_page.dart';
 import 'chat_page.dart';
 import 'events_page.dart';
@@ -222,6 +223,13 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 GestureDetector(
                                   onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const AttendanceScreen(),
+                                      ),
+                                    );
                                     // Add your navigation logic here
                                   },
                                   child: GifImageWidget(
@@ -491,6 +499,28 @@ class _HomePageState extends State<HomePage> {
                                 moduleName: 'MAD',
                                 moduleCode: 'SE303.3',
                                 hall: 'C2',
+                                time: '9.00AM-\n12.00PM',
+                              ),
+                            ),
+                            const SizedBox(height: 1),
+
+                            Container(
+                              margin: const EdgeInsets.only(top: 10),
+                              child: const LectureDetails(
+                                moduleName: 'IAS',
+                                moduleCode: 'SE303.3',
+                                hall: 'C2',
+                                time: '1.00AM-\n 5.00PM',
+                              ),
+                            ),
+                            const SizedBox(height: 1),
+
+                            Container(
+                              margin: const EdgeInsets.only(top: 10),
+                              child: const LectureDetails(
+                                moduleName: 'LAB-10 IAS',
+                                moduleCode: 'SE303.3',
+                                hall: 'C2',
                                 time: '9.00AM-\n1.00PM',
                               ),
                             ),
@@ -500,7 +530,7 @@ class _HomePageState extends State<HomePage> {
                             Container(
                               margin: const EdgeInsets.only(top: 10),
                               child: const LectureDetails(
-                                moduleName: 'MAD',
+                                moduleName: 'Cryptography',
                                 moduleCode: 'SE303.3',
                                 hall: 'C2',
                                 time: '2.00PM-\n5.00PM',
