@@ -72,111 +72,145 @@ class _GPACalculatorPageState extends State<GPACalculatorPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('GPA Calculator'),
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const Text(
-                'Enter Grades and Credits in Subjects',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              for (int i = 0; i < currentSubject; i++)
-                Row(
-                  children: [
-                    Expanded(
-                      flex: 3,
-                      child: DropdownButton<double?>(
-                        value: subjects[i].grade,
-                        onChanged: (value) {
-                          setState(() {
-                            subjects[i].grade = value;
-                          });
-                        },
-                        items: const [
-                          DropdownMenuItem(value: 4.0, child: Text('A')),
-                          DropdownMenuItem(value: 3.7, child: Text('A-')),
-                          DropdownMenuItem(value: 3.3, child: Text('B+')),
-                          DropdownMenuItem(value: 3.0, child: Text('B')),
-                          DropdownMenuItem(value: 2.7, child: Text('B-')),
-                          DropdownMenuItem(value: 2.3, child: Text('C+')),
-                          DropdownMenuItem(value: 2.0, child: Text('C')),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(width: 20),
-                    Expanded(
-                      flex: 2,
-                      child: TextField(
-                        controller: creditControllers[
-                            i], // Use the respective controller
-                        keyboardType: TextInputType.number,
-                        decoration: const InputDecoration(labelText: 'Credits'),
-                        onChanged: (value) {
-                          setState(() {
-                            subjects[i].credit = double.tryParse(value) ?? 0;
-                          });
-                        },
-                      ),
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.remove),
-                      onPressed: () {
-                        removeSubject(i);
-                      },
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.add),
-                      onPressed: () {
-                        addSubject();
-                      },
-                    ),
-                  ],
-                ),
-              ElevatedButton(
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          title: IconButton(
+            icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          toolbarHeight: 80,
+          actions: [
+            Builder(
+              builder: (context) => IconButton(
+                color: Colors.black,
                 onPressed: () {
-                  double gpa = calculateGPA();
-                  showDialog(
-                    context: context,
-                    builder: (context) => AlertDialog(
-                      title: const Text('GPA Calculation'),
-                      content: Text('Your GPA is: ${gpa.toStringAsFixed(2)}'),
-                      actions: [
-                        ElevatedButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: const Text('OK'),
-                        ),
-                      ],
-                    ),
-                  );
+                  Scaffold.of(context).openEndDrawer();
                 },
-                child: const Text('Calculate GPA'),
+                icon: const Icon(Icons.menu),
               ),
-              const SizedBox(height: 10),
-              Text(
-                  'Current Subject: $currentSubject'), // Display current subject counter
+            ),
+          ],
+          flexibleSpace: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/images/NSBMEZ Black.png',
+                height: 100,
+                width: 140,
+                fit: BoxFit.contain,
+              ),
             ],
           ),
         ),
-      ),
-      bottomNavigationBar: CustomBottomNavigationBar(
-        currentIndex: 2, // Set the correct index for EventsPage
-        onTap: (index) {
-          // Handle bottom navigation bar tap event
-          if (index == 0) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const HomePage()),
-            );
-          }
-        },
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const Text(
+                  'Enter Grades and Credits in Subjects',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                for (int i = 0; i < currentSubject; i++)
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 3,
+                        child: DropdownButton<double?>(
+                          value: subjects[i].grade,
+                          onChanged: (value) {
+                            setState(() {
+                              subjects[i].grade = value;
+                            });
+                          },
+                          items: const [
+                            DropdownMenuItem(value: 4.0, child: Text('A')),
+                            DropdownMenuItem(value: 3.7, child: Text('A-')),
+                            DropdownMenuItem(value: 3.3, child: Text('B+')),
+                            DropdownMenuItem(value: 3.0, child: Text('B')),
+                            DropdownMenuItem(value: 2.7, child: Text('B-')),
+                            DropdownMenuItem(value: 2.3, child: Text('C+')),
+                            DropdownMenuItem(value: 2.0, child: Text('C')),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 20),
+                      Expanded(
+                        flex: 2,
+                        child: TextField(
+                          controller: creditControllers[
+                              i], // Use the respective controller
+                          keyboardType: TextInputType.number,
+                          decoration:
+                              const InputDecoration(labelText: 'Credits'),
+                          onChanged: (value) {
+                            setState(() {
+                              subjects[i].credit = double.tryParse(value) ?? 0;
+                            });
+                          },
+                        ),
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.remove),
+                        onPressed: () {
+                          removeSubject(i);
+                        },
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.add),
+                        onPressed: () {
+                          addSubject();
+                        },
+                      ),
+                    ],
+                  ),
+                ElevatedButton(
+                  onPressed: () {
+                    double gpa = calculateGPA();
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: const Text('GPA Calculation'),
+                        content: Text('Your GPA is: ${gpa.toStringAsFixed(2)}'),
+                        actions: [
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text('OK'),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                  child: const Text('Calculate GPA'),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                    'Current Subject: $currentSubject'), // Display current subject counter
+              ],
+            ),
+          ),
+        ),
+        bottomNavigationBar: CustomBottomNavigationBar(
+          currentIndex: 2, // Set the correct index for EventsPage
+          onTap: (index) {
+            // Handle bottom navigation bar tap event
+            if (index == 0) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const HomePage()),
+              );
+            }
+          },
+        ),
       ),
     );
   }

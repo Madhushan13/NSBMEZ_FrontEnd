@@ -40,54 +40,87 @@ class EventsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Events'),
-      ),
-      body: Column(
-        children: [
-          Container(
-            height: 100,
-            color: Colors.green,
-            alignment: Alignment.center,
-            child: const Text(
-              'Events',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 45,
-                fontWeight: FontWeight.bold,
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          title: IconButton(
+            icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          toolbarHeight: 80,
+          actions: [
+            Builder(
+              builder: (context) => IconButton(
+                color: Colors.black,
+                onPressed: () {
+                  Scaffold.of(context).openEndDrawer();
+                },
+                icon: const Icon(Icons.menu),
               ),
             ),
+          ],
+          flexibleSpace: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/images/NSBMEZ Black.png',
+                height: 100,
+                width: 140,
+                fit: BoxFit.contain,
+              ),
+            ],
           ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: events.length,
-              itemBuilder: (context, index) {
-                final event = events[index];
-                return EventCard(
-                  date: event['date']!,
-                  month: event['month']!,
-                  year: event['year']!,
-                  title: event['title']!,
-                  description: event['description']!,
-                  imageUrl: event['imageUrl']!,
-                );
-              },
+        ),
+        body: Column(
+          children: [
+            Container(
+              height: 100,
+              color: Colors.green,
+              alignment: Alignment.center,
+              child: const Text(
+                'Events',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 45,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
-          ),
-        ],
-      ),
-      bottomNavigationBar: CustomBottomNavigationBar(
-        currentIndex: 2, // Set the correct index for EventsPage
-        onTap: (index) {
-          // Handle bottom navigation bar tap event
-          if (index == 0) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const HomePage()),
-            );
-          }
-        },
+            Expanded(
+              child: ListView.builder(
+                itemCount: events.length,
+                itemBuilder: (context, index) {
+                  final event = events[index];
+                  return EventCard(
+                    date: event['date']!,
+                    month: event['month']!,
+                    year: event['year']!,
+                    title: event['title']!,
+                    description: event['description']!,
+                    imageUrl: event['imageUrl']!,
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+        bottomNavigationBar: CustomBottomNavigationBar(
+          currentIndex: 2, // Set the correct index for EventsPage
+          onTap: (index) {
+            // Handle bottom navigation bar tap event
+            if (index == 0) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const HomePage()),
+              );
+            }
+          },
+        ),
       ),
     );
   }
