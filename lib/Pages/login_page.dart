@@ -74,10 +74,10 @@ class _LoginPageState extends State<LoginPage> {
               flex: 5,
               child: Center(
                 child: FractionallySizedBox(
-                  widthFactor: 0.5,
+                  widthFactor: 0.7,
                   heightFactor: 1,
                   child: Image.asset(
-                    'assets/images/usermaleicon-1-497.png',
+                    'assets/images/NSBMEZ Black.png',
                     fit: BoxFit.contain,
                   ),
                 ),
@@ -91,7 +91,7 @@ class _LoginPageState extends State<LoginPage> {
                   topRight: Radius.circular(20),
                 ),
                 child: Container(
-                  color: const Color(0xFF264F44),
+                  color: Color.fromARGB(230, 121, 196, 120),
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Column(
@@ -100,10 +100,10 @@ class _LoginPageState extends State<LoginPage> {
                         const Padding(
                           padding: EdgeInsets.only(bottom: 20.0),
                           child: Text(
-                            'Login',
+                            'LOGIN',
                             style: TextStyle(
                               fontSize: 30,
-                              color: Colors.white,
+                              color: Color.fromARGB(255, 15, 60, 36),
                             ),
                           ),
                         ),
