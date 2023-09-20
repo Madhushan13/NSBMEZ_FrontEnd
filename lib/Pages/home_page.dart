@@ -4,6 +4,7 @@ import 'package:flutter_application/Pages/login_page.dart';
 import 'package:flutter_application/Pages/payment_details.dart';
 import 'package:flutter_application/Pages/results_page.dart';
 import 'Home_widget.dart';
+import 'bus_tracking_page.dart';
 import 'chat_page.dart';
 import 'events_page.dart';
 import 'qr_scanner.dart';
@@ -352,12 +353,12 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 GestureDetector(
                                   onTap: () {
-                                    // Navigator.push(
-                                    //   context,
-                                    //   MaterialPageRoute(
-                                    //     builder: (context) => ChatDialog(),
-                                    //   ),
-                                    // );
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => BusTrackingPage(),
+                                      ),
+                                    );
                                     // Add your navigation logic here
                                   },
                                   child: GifImageWidget(

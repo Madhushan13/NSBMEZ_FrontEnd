@@ -2,94 +2,101 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location/location.dart';
 
 class BusTrackingPage extends StatefulWidget {
   const BusTrackingPage({Key? key}) : super(key: key);
 
   @override
-  State<BusTrackingPage> createState() => OrderTrackingPageState();
+  State<BusTrackingPage> createState() => _BusTrackingPageState();
 }
 
-class OrderTrackingPageState extends State<BusTrackingPage> {
-  final Completer<GoogleMapController> _controller = Completer();
+class _BusTrackingPageState extends State<BusTrackingPage> {
+  Completer<GoogleMapController> _googleMapController = Completer();
+  CameraPosition? _cameraPosition;
+  Location? _location;
+  LocationData? _currentLocation;
 
-  static const LatLng sourceLocation = LatLng(37.33500926, -122.03272188);
-  static const LatLng destination = LatLng(37.33429383, -122.06600055);
+  @override
+  void initState() {
+    _init();
+    super.initState();
+  }
+
+  _init() async {
+    _location = Location();
+    _cameraPosition = CameraPosition(
+        target: LatLng(
+            0, 0), // this is just the example lat and lng for initializing
+        zoom: 15);
+    _initLocation();
+  }
+
+  //function to listen when we move position
+  _initLocation() {
+    //use this to go to current location instead
+    _location?.getLocation().then((location) {
+      _currentLocation = location;
+    });
+    _location?.onLocationChanged.listen((newLocation) {
+      _currentLocation = newLocation;
+      moveToPosition(LatLng(
+          _currentLocation?.latitude ?? 0, _currentLocation?.longitude ?? 0));
+    });
+  }
+
+  moveToPosition(LatLng latLng) async {
+    GoogleMapController mapController = await _googleMapController.future;
+    mapController.animateCamera(CameraUpdate.newCameraPosition(
+        CameraPosition(target: latLng, zoom: 15)));
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Track Bus",
-          style: TextStyle(color: Colors.black, fontSize: 16),
-        ),
-      ),
-      body: const Center(
-        child: Text("The Flutter Way!"),
-      ),
+      body: _buildBody(),
     );
   }
-}
 
-// ignore: camel_case_types
-class CustomBottomNavigationBar extends StatelessWidget {
-  final int currentIndex;
-  final ValueChanged<int> onTap;
+  Widget _buildBody() {
+    return _getMap();
+  }
 
-  CustomBottomNavigationBar({
-    required this.currentIndex,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
+  Widget _getMarker() {
     return Container(
-      color: Colors.white,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            IconButton(
-              onPressed: () {
-                onTap(0);
-              },
-              icon: Icon(
-                Icons.home,
-                color: currentIndex == 0 ? Colors.blue : Colors.grey,
-              ),
-            ),
-            IconButton(
-              onPressed: () {
-                onTap(1);
-              },
-              icon: Icon(
-                Icons.event,
-                color: currentIndex == 1 ? Colors.blue : Colors.grey,
-              ),
-            ),
-            IconButton(
-              onPressed: () {
-                onTap(2);
-              },
-              icon: Icon(
-                Icons.payment,
-                color: currentIndex == 2 ? Colors.blue : Colors.grey,
-              ),
-            ),
-            IconButton(
-              onPressed: () {
-                onTap(3);
-              },
-              icon: Icon(
-                Icons.track_changes,
-                color: currentIndex == 3 ? Colors.blue : Colors.grey,
-              ),
-            ),
-          ],
+      width: 40,
+      height: 40,
+      padding: EdgeInsets.all(2),
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(100),
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey,
+                offset: Offset(0, 3),
+                spreadRadius: 4,
+                blurRadius: 6)
+          ]),
+      child: ClipOval(child: Image.asset("assets/images/NSBMEZ Black.png")),
+    );
+  }
+
+  Widget _getMap() {
+    return Stack(
+      children: [
+        GoogleMap(
+          initialCameraPosition: _cameraPosition!,
+          mapType: MapType.normal,
+          onMapCreated: (GoogleMapController controller) {
+            // now we need a variable to get the controller of google map
+            if (!_googleMapController.isCompleted) {
+              _googleMapController.complete(controller);
+            }
+          },
         ),
-      ),
+        Positioned.fill(
+            child: Align(alignment: Alignment.center, child: _getMarker()))
+      ],
     );
   }
 }

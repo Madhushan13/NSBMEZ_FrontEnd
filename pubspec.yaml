@@ -45,6 +45,7 @@ dependencies:
   firebase_auth: ^4.7.3
   google_maps_flutter: ^2.5.0
   device_preview: ^1.1.0
+  location: ^5.0.3
 
 dev_dependencies:
   flutter_test:
