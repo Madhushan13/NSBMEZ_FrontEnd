@@ -65,6 +65,16 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    // Get the screen size
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
+    // Calculate responsive padding based on screen size
+    final EdgeInsetsGeometry contentPadding = EdgeInsets.symmetric(
+      horizontal: screenWidth * 0.05,
+      vertical: screenHeight * 0.02,
+    );
+
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: Form(
@@ -94,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: Container(
                   color: const Color.fromARGB(230, 121, 196, 120),
                   child: Padding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding: contentPadding, // Use responsive padding
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -187,7 +197,7 @@ class _LoginPageState extends State<LoginPage> {
                             child: ElevatedButton(
                               onPressed: signInWithEmailPassword,
                               style: ElevatedButton.styleFrom(
-                                fixedSize: const Size(500, 50),
+                                fixedSize: Size(screenWidth * 0.9, 50),
                                 backgroundColor: Colors.black,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),

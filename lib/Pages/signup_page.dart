@@ -18,36 +18,42 @@ class _SignupPageState extends State<SignupPage> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController cpasswordController = TextEditingController();
 
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>(); // Add form key
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: Form(
         key: _formKey,
         child: Column(
           children: [
             Expanded(
-              flex: 5,
+              flex: 3,
               child: Center(
                 child: FractionallySizedBox(
-                    widthFactor: 0.7,
-                    heightFactor: 1,
-                    child: Image.asset(
-                      'assets/images/NSBMEZ Black.png',
-                      fit: BoxFit.contain,
-                    )),
+                  widthFactor: screenSize.width > 600 ? 0.3 : 0.7,
+                  heightFactor: 1,
+                  child: Image.asset(
+                    'assets/images/NSBMEZ Black.png',
+                    fit: BoxFit.contain,
+                  ),
+                ),
               ),
             ),
             Expanded(
-              flex: 9,
+              flex: 5,
               child: ClipRRect(
                 borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20)),
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                ),
                 child: Container(
                   color: const Color.fromARGB(230, 121, 196, 120),
                   child: Padding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding:
+                        EdgeInsets.all(screenSize.width > 600 ? 40.0 : 20.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -61,7 +67,6 @@ class _SignupPageState extends State<SignupPage> {
                             ),
                           ),
                         ),
-                        // Username
                         TextFormField(
                           controller: usernameController,
                           validator: validateEmail,
@@ -74,21 +79,20 @@ class _SignupPageState extends State<SignupPage> {
                               ),
                             ),
                             focusedBorder: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                                borderSide: BorderSide(
-                                  color: Colors.black,
-                                )),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              borderSide: BorderSide(
+                                color: Colors.black,
+                              ),
+                            ),
                             fillColor: Color(0xFFBAD3C8),
                             filled: true,
                             hintText: 'Student ID',
                           ),
                         ),
-
                         const SizedBox(
                           height: 25,
                         ),
-                        // Password
                         TextFormField(
                           controller: passwordController,
                           validator: validatePW,
@@ -100,9 +104,11 @@ class _SignupPageState extends State<SignupPage> {
                                   passwordToggle = !passwordToggle;
                                 });
                               },
-                              child: Icon(passwordToggle
-                                  ? Icons.visibility
-                                  : Icons.visibility_off),
+                              child: Icon(
+                                passwordToggle
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                              ),
                             ),
                             enabledBorder: const OutlineInputBorder(
                               borderRadius:
@@ -112,11 +118,12 @@ class _SignupPageState extends State<SignupPage> {
                               ),
                             ),
                             focusedBorder: const OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                                borderSide: BorderSide(
-                                  color: Colors.black,
-                                )),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              borderSide: BorderSide(
+                                color: Colors.black,
+                              ),
+                            ),
                             fillColor: const Color(0xFFBAD3C8),
                             filled: true,
                             hintText: 'Password',
@@ -124,10 +131,9 @@ class _SignupPageState extends State<SignupPage> {
                         ),
                         const SizedBox(height: 25),
                         TextFormField(
-                          validator: ((value) =>
-                              value != passwordController.text
-                                  ? 'Password does not match'
-                                  : null),
+                          validator: (value) => value != passwordController.text
+                              ? 'Password does not match'
+                              : null,
                           controller: cpasswordController,
                           obscureText: passwordToggle,
                           decoration: InputDecoration(
@@ -137,9 +143,11 @@ class _SignupPageState extends State<SignupPage> {
                                   passwordToggle = !passwordToggle;
                                 });
                               },
-                              child: Icon(passwordToggle
-                                  ? Icons.visibility
-                                  : Icons.visibility_off),
+                              child: Icon(
+                                passwordToggle
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                              ),
                             ),
                             enabledBorder: const OutlineInputBorder(
                               borderRadius:
@@ -149,11 +157,12 @@ class _SignupPageState extends State<SignupPage> {
                               ),
                             ),
                             focusedBorder: const OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                                borderSide: BorderSide(
-                                  color: Colors.black,
-                                )),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              borderSide: BorderSide(
+                                color: Colors.black,
+                              ),
+                            ),
                             fillColor: const Color(0xFFBAD3C8),
                             filled: true,
                             hintText: 'Confirm password',
@@ -166,8 +175,8 @@ class _SignupPageState extends State<SignupPage> {
                           child: Text(
                             authError ? errorMessage : '',
                             style: const TextStyle(
-                                color: Colors
-                                    .red), // You can style the error message text here
+                              color: Colors.red,
+                            ),
                           ),
                         ),
                         ElevatedButton(
@@ -180,7 +189,6 @@ class _SignupPageState extends State<SignupPage> {
                                   password: passwordController.text,
                                 );
 
-                                // Navigate to the login page after successful registration
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -215,7 +223,11 @@ class _SignupPageState extends State<SignupPage> {
                             }
                           },
                           style: ElevatedButton.styleFrom(
-                            fixedSize: const Size(500, 50),
+                            fixedSize: Size(
+                                screenSize.width > 600
+                                    ? 500
+                                    : screenSize.width * 0.8,
+                                50),
                             backgroundColor: Colors.black,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
@@ -226,7 +238,6 @@ class _SignupPageState extends State<SignupPage> {
                             style: TextStyle(fontSize: 18),
                           ),
                         ),
-
                         const SizedBox(height: 20),
                         GestureDetector(
                           onTap: () {
