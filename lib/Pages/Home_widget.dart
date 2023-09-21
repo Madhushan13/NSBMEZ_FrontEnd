@@ -125,7 +125,7 @@ class LectureDetails extends StatelessWidget {
       margin: const EdgeInsets.only(top: 10),
       padding: const EdgeInsets.all(10.0),
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 99, 232, 130),
+        color: Color.fromARGB(255, 214, 220, 215),
         borderRadius: BorderRadius.circular(16.0),
         border: Border.all(
           color: const Color.fromARGB(255, 4, 4, 5),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'Home_widget.dart';
+import 'chat_page.dart';
 import 'home_page.dart';
 import 'login_page.dart';
 //import 'package:flutter_application/Pages/home_page.dart';
@@ -8,9 +9,16 @@ import 'login_page.dart';
 
 const Color kHintTextColor = Colors.grey; // Define the hint text color here
 
-class ResultsPage extends StatelessWidget {
+class ResultsPage extends StatefulWidget {
   const ResultsPage({super.key});
 
+  @override
+  State<ResultsPage> createState() => _ResultsPageState();
+}
+
+class _ResultsPageState extends State<ResultsPage> {
+  int selectedYear = 1;
+  int selectedSemester = 1;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -281,13 +289,19 @@ class ResultsPage extends StatelessWidget {
           ),
         ),
         bottomNavigationBar: CustomBottomNavigationBar(
-          currentIndex: 2, // Set the correct index for EventsPage
+          currentIndex: 3, // Set the correct index for EventsPage
           onTap: (index) {
             // Handle bottom navigation bar tap event
-            if (index == 0) {
+            if (index == 2) {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const HomePage()),
+                MaterialPageRoute(builder: (context) => ChatDialog()),
+              );
+            }
+            if (index == 1) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HomePage()),
               );
             }
           },

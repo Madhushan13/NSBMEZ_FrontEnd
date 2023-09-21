@@ -156,15 +156,16 @@ class EventsPage extends StatelessWidget {
         body: Column(
           children: [
             Container(
-              height: 100,
-              color: Colors.green,
-              alignment: Alignment.center,
-              child: const Text(
-                'Events',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 45,
-                  fontWeight: FontWeight.bold,
+              color: const Color(0xFF1B6E4F),
+              padding: const EdgeInsets.all(16.0),
+              child: const Center(
+                child: Text(
+                  'EVENTS',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24.0,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
@@ -187,7 +188,7 @@ class EventsPage extends StatelessWidget {
           ],
         ),
         bottomNavigationBar: CustomBottomNavigationBar(
-          currentIndex: 2, // Set the correct index for EventsPage
+          currentIndex: 3, // Set the correct index for EventsPage
           onTap: (index) {
             // Handle bottom navigation bar tap event
             if (index == 2) {

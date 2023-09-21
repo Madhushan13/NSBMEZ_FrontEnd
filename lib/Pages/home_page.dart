@@ -19,7 +19,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int currentIndex = 0;
+  int currentIndex = 1;
 
   void onTabTapped(int index) {
     setState(() {
@@ -463,9 +463,9 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         padding: const EdgeInsets.all(10),
-                        margin: const EdgeInsets.only(right: 200),
+                        margin: const EdgeInsets.only(right: 190),
                         child: const Text(
-                          "How's Going Today?",
+                          "How's it Going Today?",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'Home_widget.dart';
+import 'chat_page.dart';
 import 'home_page.dart';
 import 'login_page.dart';
 
@@ -185,69 +186,85 @@ class _GPACalculatorPageState extends State<GPACalculatorPage> {
           ),
         ),
         body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                const Text(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                color: const Color(0xFF1B6E4F),
+                padding: const EdgeInsets.all(16.0),
+                child: const Center(
+                  child: Text(
+                    'GPA Calculator',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              Center(
+                child: const Text(
                   'Enter Grades and Credits in Subjects',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
-                for (int i = 0; i < currentSubject; i++)
-                  Row(
-                    children: [
-                      Expanded(
-                        flex: 3,
-                        child: DropdownButton<double?>(
-                          value: subjects[i].grade,
-                          onChanged: (value) {
-                            setState(() {
-                              subjects[i].grade = value;
-                            });
-                          },
-                          items: const [
-                            DropdownMenuItem(value: 4.0, child: Text('A')),
-                            DropdownMenuItem(value: 3.7, child: Text('A-')),
-                            DropdownMenuItem(value: 3.3, child: Text('B+')),
-                            DropdownMenuItem(value: 3.0, child: Text('B')),
-                            DropdownMenuItem(value: 2.7, child: Text('B-')),
-                            DropdownMenuItem(value: 2.3, child: Text('C+')),
-                            DropdownMenuItem(value: 2.0, child: Text('C')),
-                          ],
-                        ),
+              ),
+              for (int i = 0; i < currentSubject; i++)
+                Row(
+                  children: [
+                    Expanded(
+                      flex: 3,
+                      child: DropdownButton<double?>(
+                        value: subjects[i].grade,
+                        onChanged: (value) {
+                          setState(() {
+                            subjects[i].grade = value;
+                          });
+                        },
+                        items: const [
+                          DropdownMenuItem(value: 4.0, child: Text('A')),
+                          DropdownMenuItem(value: 3.7, child: Text('A-')),
+                          DropdownMenuItem(value: 3.3, child: Text('B+')),
+                          DropdownMenuItem(value: 3.0, child: Text('B')),
+                          DropdownMenuItem(value: 2.7, child: Text('B-')),
+                          DropdownMenuItem(value: 2.3, child: Text('C+')),
+                          DropdownMenuItem(value: 2.0, child: Text('C')),
+                        ],
                       ),
-                      const SizedBox(width: 20),
-                      Expanded(
-                        flex: 2,
-                        child: TextField(
-                          controller: creditControllers[
-                              i], // Use the respective controller
-                          keyboardType: TextInputType.number,
-                          decoration:
-                              const InputDecoration(labelText: 'Credits'),
-                          onChanged: (value) {
-                            setState(() {
-                              subjects[i].credit = double.tryParse(value) ?? 0;
-                            });
-                          },
-                        ),
-                      ),
-                      IconButton(
-                        icon: const Icon(Icons.remove),
-                        onPressed: () {
-                          removeSubject(i);
+                    ),
+                    const SizedBox(width: 20),
+                    Expanded(
+                      flex: 2,
+                      child: TextField(
+                        controller: creditControllers[
+                            i], // Use the respective controller
+                        keyboardType: TextInputType.number,
+                        decoration: const InputDecoration(labelText: 'Credits'),
+                        onChanged: (value) {
+                          setState(() {
+                            subjects[i].credit = double.tryParse(value) ?? 0;
+                          });
                         },
                       ),
-                      IconButton(
-                        icon: const Icon(Icons.add),
-                        onPressed: () {
-                          addSubject();
-                        },
-                      ),
-                    ],
-                  ),
-                ElevatedButton(
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.remove),
+                      onPressed: () {
+                        removeSubject(i);
+                      },
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.add),
+                      onPressed: () {
+                        addSubject();
+                      },
+                    ),
+                  ],
+                ),
+              Container(
+                height: 50,
+                width: 200,
+                child: ElevatedButton(
                   onPressed: () {
                     double gpa = calculateGPA();
                     showDialog(
@@ -257,32 +274,46 @@ class _GPACalculatorPageState extends State<GPACalculatorPage> {
                         content: Text('Your GPA is: ${gpa.toStringAsFixed(2)}'),
                         actions: [
                           ElevatedButton(
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: const Text('OK'),
-                          ),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: const Text('OK'),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.black,
+                              )),
                         ],
                       ),
                     );
                   },
                   child: const Text('Calculate GPA'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ), // Change the width and height here
+                  ),
                 ),
-                const SizedBox(height: 10),
-                Text(
-                    'Current Subject: $currentSubject'), // Display current subject counter
-              ],
-            ),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                  'Current Subjects: $currentSubject'), // Display current subject counter
+            ],
           ),
         ),
         bottomNavigationBar: CustomBottomNavigationBar(
-          currentIndex: 2, // Set the correct index for EventsPage
+          currentIndex: 3, // Set the correct index for EventsPage
           onTap: (index) {
             // Handle bottom navigation bar tap event
-            if (index == 0) {
+            if (index == 2) {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const HomePage()),
+                MaterialPageRoute(builder: (context) => ChatDialog()),
+              );
+            }
+            if (index == 1) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HomePage()),
               );
             }
           },

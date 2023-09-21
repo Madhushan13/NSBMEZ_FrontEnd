@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
+import 'Home_widget.dart';
+import 'chat_page.dart';
+import 'home_page.dart';
+
 class BusTrackingPage extends StatefulWidget {
   const BusTrackingPage({Key? key}) : super(key: key);
 
@@ -55,6 +59,24 @@ class _BusTrackingPageState extends State<BusTrackingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _buildBody(),
+      bottomNavigationBar: CustomBottomNavigationBar(
+        currentIndex: 3, // Set the correct index for EventsPage
+        onTap: (index) {
+          // Handle bottom navigation bar tap event
+          if (index == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ChatDialog()),
+            );
+          }
+          if (index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HomePage()),
+            );
+          }
+        },
+      ),
     );
   }
 

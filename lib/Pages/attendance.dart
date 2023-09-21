@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'Home_widget.dart';
 import 'attendance_utils.dart';
+import 'chat_page.dart';
+import 'home_page.dart';
 import 'login_page.dart';
 
 class AttendanceScreen extends StatelessWidget {
@@ -11,6 +14,24 @@ class AttendanceScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        bottomNavigationBar: CustomBottomNavigationBar(
+          currentIndex: 3, // Set the correct index for EventsPage
+          onTap: (index) {
+            // Handle bottom navigation bar tap event
+            if (index == 2) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ChatDialog()),
+              );
+            }
+            if (index == 1) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HomePage()),
+              );
+            }
+          },
+        ),
         appBar: AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: Colors.transparent,
@@ -183,6 +204,14 @@ class SubjectCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Color progressColor;
+
+    if (attendancePercentage < 50.0) {
+      progressColor = Colors.red;
+    } else {
+      progressColor = Color.fromARGB(255, 27, 206, 39);
+    }
+
     return Card(
       elevation: 4.0,
       margin: const EdgeInsets.all(16.0),
@@ -212,7 +241,8 @@ class SubjectCard extends StatelessWidget {
                   ),
                 ],
               ),
-              progressColor: Color.fromARGB(255, 27, 206, 39),
+              progressColor:
+                  progressColor, // Use the dynamically determined color
             ),
           ],
         ),

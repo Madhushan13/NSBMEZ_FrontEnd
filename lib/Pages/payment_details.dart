@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'Home_widget.dart';
+import 'chat_page.dart';
 import 'home_page.dart';
 import 'login_page.dart';
 
@@ -153,7 +154,11 @@ class Online_Payment extends StatelessWidget {
                     const SizedBox(height: 16.0),
                     ElevatedButton(
                       onPressed: () {},
-                      child: const Text('Next'),
+                      style: ElevatedButton.styleFrom(
+                        primary:
+                            Color(0xFF264F44), // Set the background color here
+                      ),
+                      child: const Text('Submit'),
                     ),
                   ],
                 ),
@@ -162,12 +167,19 @@ class Online_Payment extends StatelessWidget {
           ),
         ),
         bottomNavigationBar: CustomBottomNavigationBar(
-          currentIndex: 2,
+          currentIndex: 3, // Set the correct index for EventsPage
           onTap: (index) {
-            if (index == 0) {
+            // Handle bottom navigation bar tap event
+            if (index == 2) {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const HomePage()),
+                MaterialPageRoute(builder: (context) => ChatDialog()),
+              );
+            }
+            if (index == 1) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HomePage()),
               );
             }
           },

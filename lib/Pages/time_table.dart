@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 import 'Home_widget.dart';
+import 'chat_page.dart';
 import 'home_page.dart';
 
 class TimeTable extends StatelessWidget {
@@ -22,10 +23,16 @@ class TimeTable extends StatelessWidget {
           currentIndex: 2, // Set the correct index for EventsPage
           onTap: (index) {
             // Handle bottom navigation bar tap event
-            if (index == 0) {
+            if (index == 2) {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const HomePage()),
+                MaterialPageRoute(builder: (context) => ChatDialog()),
+              );
+            }
+            if (index == 1) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HomePage()),
               );
             }
           },
