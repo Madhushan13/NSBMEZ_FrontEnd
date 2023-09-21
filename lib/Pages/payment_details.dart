@@ -53,8 +53,8 @@ class Online_Payment extends StatelessWidget {
               padding: EdgeInsets.zero,
               children: [
                 const UserAccountsDrawerHeader(
-                  accountName: Text('John Doe'),
-                  accountEmail: Text('johndoe@example.com'),
+                  accountName: Text('Student Username'),
+                  accountEmail: Text('Student@nsbm.ac.lk'),
                   currentAccountPicture: CircleAvatar(
                     child: Icon(
                       Icons.person,
@@ -155,8 +155,8 @@ class Online_Payment extends StatelessWidget {
                     ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
-                        primary:
-                            Color(0xFF264F44), // Set the background color here
+                        primary: const Color(
+                            0xFF264F44), // Set the background color here
                       ),
                       child: const Text('Submit'),
                     ),
@@ -179,7 +179,7 @@ class Online_Payment extends StatelessWidget {
             if (index == 1) {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => HomePage()),
+                MaterialPageRoute(builder: (context) => const HomePage()),
               );
             }
           },

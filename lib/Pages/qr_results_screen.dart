@@ -53,8 +53,8 @@ class ResultsScreen extends StatelessWidget {
               padding: EdgeInsets.zero,
               children: [
                 const UserAccountsDrawerHeader(
-                  accountName: Text('John Doe'),
-                  accountEmail: Text('johndoe@example.com'),
+                  accountName: Text('Student Username'),
+                  accountEmail: Text('Student@nsbm.ac.lk'),
                   currentAccountPicture: CircleAvatar(
                     child: Icon(
                       Icons.person,

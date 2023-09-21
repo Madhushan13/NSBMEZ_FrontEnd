@@ -72,7 +72,7 @@ class _HomePageState extends State<HomePage> {
               Image.asset(
                 'assets/images/NSBMEZ Black.png',
                 height: 100,
-                width: 140,
+                width: 200,
                 fit: BoxFit.contain,
               ),
             ],
@@ -85,8 +85,8 @@ class _HomePageState extends State<HomePage> {
               padding: EdgeInsets.zero,
               children: [
                 const UserAccountsDrawerHeader(
-                  accountName: Text('John Doe'),
-                  accountEmail: Text('johndoe@example.com'),
+                  accountName: Text('Student Username'),
+                  accountEmail: Text('Student@nsbm.ac.lk'),
                   currentAccountPicture: CircleAvatar(
                     child: Icon(
                       Icons.person,
@@ -140,7 +140,7 @@ class _HomePageState extends State<HomePage> {
                   leading: const Icon(Icons.logout),
                   title: const Text('Logout'),
                   onTap: () {
-                    Navigator.push(
+                    Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                         builder: (context) => const LoginPage(),
@@ -363,7 +363,8 @@ class _HomePageState extends State<HomePage> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => BusTrackingPage(),
+                                        builder: (context) =>
+                                            const BusTrackingPage(),
                                       ),
                                     );
                                     // Add your navigation logic here

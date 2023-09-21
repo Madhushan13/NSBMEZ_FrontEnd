@@ -7,9 +7,9 @@ class ChatDialog extends StatelessWidget {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text('Chat Popup'),
+          const Text('Chat Popup'),
           IconButton(
-            icon: Icon(Icons.close),
+            icon: const Icon(Icons.close),
             onPressed: () {
               // Handle closing the chat dialog here
               Navigator.of(context).pop(); // Close the dialog
@@ -31,7 +31,7 @@ class ChatDialog extends StatelessWidget {
                 ],
               ),
             ),
-            TextField(
+            const TextField(
               decoration: InputDecoration(
                 hintText: 'Type a message...',
               ),
@@ -40,7 +40,7 @@ class ChatDialog extends StatelessWidget {
               onPressed: () {
                 // Handle sending message here
               },
-              child: Text('Send'),
+              child: const Text('Send'),
             ),
           ],
         ),
@@ -60,15 +60,15 @@ class ChatMessage extends StatelessWidget {
     return Container(
       alignment: isMe ? Alignment.centerRight : Alignment.centerLeft,
       child: Container(
-        padding: EdgeInsets.all(8.0),
-        margin: EdgeInsets.symmetric(vertical: 4.0),
+        padding: const EdgeInsets.all(8.0),
+        margin: const EdgeInsets.symmetric(vertical: 4.0),
         decoration: BoxDecoration(
           color: isMe ? Colors.blue : Colors.grey,
           borderRadius: BorderRadius.circular(8.0),
         ),
         child: Text(
           text,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
           ),
         ),

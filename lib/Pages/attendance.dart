@@ -27,7 +27,7 @@ class AttendanceScreen extends StatelessWidget {
             if (index == 1) {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => HomePage()),
+                MaterialPageRoute(builder: (context) => const HomePage()),
               );
             }
           },
@@ -73,8 +73,8 @@ class AttendanceScreen extends StatelessWidget {
               padding: EdgeInsets.zero,
               children: [
                 const UserAccountsDrawerHeader(
-                  accountName: Text('John Doe'),
-                  accountEmail: Text('johndoe@example.com'),
+                  accountName: Text('Student Username'),
+                  accountEmail: Text('Student@nsbm.ac.lk'),
                   currentAccountPicture: CircleAvatar(
                     child: Icon(
                       Icons.person,
@@ -209,7 +209,7 @@ class SubjectCard extends StatelessWidget {
     if (attendancePercentage < 50.0) {
       progressColor = Colors.red;
     } else {
-      progressColor = Color.fromARGB(255, 27, 206, 39);
+      progressColor = const Color.fromARGB(255, 27, 206, 39);
     }
 
     return Card(

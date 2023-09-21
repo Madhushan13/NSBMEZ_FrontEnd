@@ -32,7 +32,7 @@ class TimeTable extends StatelessWidget {
             if (index == 1) {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => HomePage()),
+                MaterialPageRoute(builder: (context) => const HomePage()),
               );
             }
           },

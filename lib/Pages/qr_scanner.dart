@@ -42,7 +42,7 @@ class _QRScannerState extends State<QRScanner> {
             if (index == 1) {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => HomePage()),
+                MaterialPageRoute(builder: (context) => const HomePage()),
               );
             }
           },
