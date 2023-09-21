@@ -1,33 +1,22 @@
 import 'package:flutter/material.dart';
-// class ChatPopup extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Chat Popup Example'),
-//       ),
-//       body: Center(
-//         child: ElevatedButton(
-//           onPressed: () {
-//             showDialog(
-//               context: context,
-//               builder: (BuildContext context) {
-//                 return ChatDialog();
-//               },
-//             );
-//           },
-//           child: Text('Open Chat Popup'),
-//         ),
-//       ),
-//     );
-//   }
-// }
 
 class ChatDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text('Chat Popup'),
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text('Chat Popup'),
+          IconButton(
+            icon: Icon(Icons.close),
+            onPressed: () {
+              // Handle closing the chat dialog here
+              Navigator.of(context).pop(); // Close the dialog
+            },
+          ),
+        ],
+      ),
       content: Container(
         width: MediaQuery.of(context).size.width * 0.7,
         height: MediaQuery.of(context).size.height * 0.5,
