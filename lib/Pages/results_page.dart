@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'Home_widget.dart';
 import 'home_page.dart';
+import 'login_page.dart';
 //import 'package:flutter_application/Pages/home_page.dart';
 //import 'package:flutter_application/Pages/login_page.dart';
 
@@ -110,6 +111,12 @@ class ResultsPage extends StatelessWidget {
                   leading: const Icon(Icons.logout),
                   title: const Text('Logout'),
                   onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginPage(),
+                      ),
+                    );
                     // Add your logout navigation logic here
                   },
                 ),

@@ -48,15 +48,6 @@ class _HomePageState extends State<HomePage> {
           ),
           toolbarHeight: 80,
           actions: [
-            // Notification Icon
-            /*IconButton(
-              //add color
-              color: Colors.black,
-              onPressed: () {
-                // Add your notification logic here
-              },
-              icon: const Icon(Icons.notifications),
-            ),*/
             Builder(
               builder: (context) => IconButton(
                 color: Colors.black,

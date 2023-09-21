@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/Pages/home_page.dart';
 
 import 'Home_widget.dart';
+import 'login_page.dart';
 
 class EventsPage extends StatelessWidget {
   // Sample event data
@@ -74,6 +75,81 @@ class EventsPage extends StatelessWidget {
                 fit: BoxFit.contain,
               ),
             ],
+          ),
+        ),
+        endDrawer: Drawer(
+          child: Container(
+            color: const Color(0xFFBAD3C8),
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: [
+                const UserAccountsDrawerHeader(
+                  accountName: Text('John Doe'),
+                  accountEmail: Text('johndoe@example.com'),
+                  currentAccountPicture: CircleAvatar(
+                    child: Icon(
+                      Icons.person,
+                    ),
+                  ),
+                  decoration: BoxDecoration(color: Color(0xFF264F44)),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.account_box),
+                  title: const Text('My Profile'),
+                  onTap: () {
+                    // Add your profile navigation logic here
+                  },
+                ),
+                ListTile(
+                  leading: const Icon(Icons.language),
+                  title: const Text('Language'),
+                  onTap: () {
+                    // Add your transport service navigation logic here
+                  },
+                ),
+                ListTile(
+                  leading: const Icon(Icons.support_agent),
+                  title: const Text('Student Support'),
+                  onTap: () {
+                    // Add your attendance/QR navigation logic here
+                  },
+                ),
+                ListTile(
+                  leading: const Icon(Icons.settings),
+                  title: const Text('Settings'),
+                  onTap: () {
+                    // Add your events navigation logic here
+                  },
+                ),
+                ListTile(
+                  leading: const Icon(Icons.group),
+                  title: const Text('About us'),
+                  onTap: () {
+                    // Add your time table navigation logic here
+                  },
+                ),
+                ListTile(
+                  leading: const Icon(Icons.library_books),
+                  title: const Text('Terms and Conditions '),
+                  onTap: () {
+                    // Add your result navigation logic here
+                  },
+                ),
+                ListTile(
+                  leading: const Icon(Icons.logout),
+                  title: const Text('Logout'),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginPage(),
+                      ),
+                    );
+                    // Add your logout navigation logic here
+                  },
+                ),
+              ],
+            ),
           ),
         ),
         body: Column(
