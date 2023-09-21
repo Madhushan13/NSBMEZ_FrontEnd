@@ -24,6 +24,14 @@ class _HomePageState extends State<HomePage> {
   void onTabTapped(int index) {
     setState(() {
       currentIndex = index;
+      if (index == 2) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ChatDialog(),
+          ),
+        );
+      }
     });
   }
 

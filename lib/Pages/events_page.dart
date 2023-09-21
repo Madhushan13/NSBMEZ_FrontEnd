@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/Pages/home_page.dart';
 
 import 'Home_widget.dart';
+import 'chat_page.dart';
 import 'login_page.dart';
 
 class EventsPage extends StatelessWidget {
@@ -189,10 +190,16 @@ class EventsPage extends StatelessWidget {
           currentIndex: 2, // Set the correct index for EventsPage
           onTap: (index) {
             // Handle bottom navigation bar tap event
-            if (index == 0) {
+            if (index == 2) {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const HomePage()),
+                MaterialPageRoute(builder: (context) => ChatDialog()),
+              );
+            }
+            if (index == 1) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HomePage()),
               );
             }
           },

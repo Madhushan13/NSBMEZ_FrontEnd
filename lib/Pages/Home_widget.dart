@@ -243,26 +243,35 @@ class CustomBottomNavigationBar extends StatelessWidget {
     return Container(
       color: Colors.white,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
+        padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
         child: GNav(
           backgroundColor: Colors.white,
           color: Color.fromARGB(255, 56, 144, 76),
           activeColor: Color.fromARGB(255, 255, 255, 255),
           tabBackgroundColor: Color.fromARGB(255, 56, 144, 76),
           gap: 8,
-          padding: const EdgeInsets.all(15),
-          tabs: const [
-            GButton(
-              icon: Icons.home,
-              text: 'Home',
-            ),
+          padding: EdgeInsets.all(15),
+          tabs: [
             GButton(
               icon: Icons.notifications,
               text: 'Notifications',
+              onPressed: () {
+                onTap(0);
+              },
+            ),
+            GButton(
+              icon: Icons.home,
+              text: 'Home',
+              onPressed: () {
+                onTap(1);
+              },
             ),
             GButton(
               icon: Icons.chat,
               text: 'Chat',
+              onPressed: () {
+                onTap(2);
+              },
             ),
           ],
           selectedIndex: currentIndex,
