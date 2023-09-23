@@ -141,8 +141,7 @@ class LectureDetails extends StatelessWidget {
               Text(
                 'Module Name',
                 style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  decoration: TextDecoration.underline,
+                  fontWeight: FontWeight.w900,
                   decorationThickness: 2.5,
                   fontSize: 14,
                   color: Color.fromARGB(255, 6, 7, 7),
@@ -151,8 +150,7 @@ class LectureDetails extends StatelessWidget {
               Text(
                 'Module code',
                 style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  decoration: TextDecoration.underline,
+                  fontWeight: FontWeight.w900,
                   decorationThickness: 2.5,
                   fontSize: 14,
                   color: Color.fromARGB(255, 6, 7, 7),
@@ -161,8 +159,7 @@ class LectureDetails extends StatelessWidget {
               Text(
                 'Hall',
                 style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  decoration: TextDecoration.underline,
+                  fontWeight: FontWeight.w900,
                   decorationThickness: 2.5,
                   fontSize: 14,
                   color: Color.fromARGB(255, 6, 7, 7),
@@ -171,9 +168,8 @@ class LectureDetails extends StatelessWidget {
               Text(
                 'Time',
                 style: TextStyle(
-                  decoration: TextDecoration.underline,
+                  fontWeight: FontWeight.w900,
                   decorationThickness: 2.5,
-                  fontWeight: FontWeight.bold,
                   fontSize: 14,
                   color: Color.fromARGB(255, 6, 7, 7),
                 ),
@@ -187,7 +183,6 @@ class LectureDetails extends StatelessWidget {
               Text(
                 moduleName,
                 style: const TextStyle(
-                  fontWeight: FontWeight.bold,
                   fontSize: 14,
                   color: Color.fromARGB(255, 6, 7, 7),
                 ),
@@ -196,7 +191,6 @@ class LectureDetails extends StatelessWidget {
               Text(
                 moduleCode,
                 style: const TextStyle(
-                  fontWeight: FontWeight.bold,
                   fontSize: 14,
                   color: Color.fromARGB(255, 6, 7, 7),
                 ),
@@ -205,7 +199,6 @@ class LectureDetails extends StatelessWidget {
               Text(
                 hall,
                 style: const TextStyle(
-                  fontWeight: FontWeight.bold,
                   fontSize: 14,
                   color: Color.fromARGB(255, 6, 7, 7),
                 ),
@@ -213,7 +206,6 @@ class LectureDetails extends StatelessWidget {
               Text(
                 time,
                 style: const TextStyle(
-                  fontWeight: FontWeight.bold,
                   fontSize: 14,
                   color: Color.fromARGB(255, 6, 7, 7),
                 ),
