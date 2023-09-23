@@ -3,6 +3,7 @@ import 'package:flutter_application/Pages/gpa_calculater.dart';
 import 'package:flutter_application/Pages/login_page.dart';
 import 'package:flutter_application/Pages/payment_details.dart';
 import 'package:flutter_application/Pages/results_page.dart';
+import 'package:flutter_application/Pages/sendmail.dart';
 import 'Home_widget.dart';
 import 'attendance.dart';
 import 'bus_tracking_page.dart';
@@ -112,6 +113,12 @@ class _HomePageState extends State<HomePage> {
                   leading: const Icon(Icons.support_agent),
                   title: const Text('Student Support'),
                   onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SendMail(),
+                      ),
+                    );
                     // Add your attendance/QR navigation logic here
                   },
                 ),
