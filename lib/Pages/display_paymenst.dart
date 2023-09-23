@@ -1,34 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter_application/Pages/display_paymenst.dart';
 import 'Home_widget.dart';
 import 'chat_page.dart';
 import 'home_page.dart';
 import 'login_page.dart';
 
-class Online_Payment extends StatefulWidget {
-  Online_Payment({super.key});
+class Display_Payment extends StatefulWidget {
+  Display_Payment({super.key});
 
   @override
-  State<Online_Payment> createState() => _Online_PaymentState();
+  State<Display_Payment> createState() => _Display_PaymentState();
 }
 
-class _Online_PaymentState extends State<Online_Payment> {
-  final idController = TextEditingController();
-
-  final nameController = TextEditingController();
-
-  final intakeController = TextEditingController();
-
-  final degreeController = TextEditingController();
-
-  final feeController = TextEditingController();
-
-  final amountController = TextEditingController();
-
-  final paymentController = TextEditingController();
-
+class _Display_PaymentState extends State<Display_Payment> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -165,88 +150,43 @@ class _Online_PaymentState extends State<Online_Payment> {
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Column(
                   children: [
-                    TextFormField(
-                      controller: idController,
-                      decoration: InputDecoration(
-                        border: const OutlineInputBorder(),
-                        hintText: 'Enter Student ID',
-                      ),
-                    ),
-                    const SizedBox(height: 16.0),
-                    TextFormField(
-                      controller: nameController,
-                      decoration: InputDecoration(
-                        border: const OutlineInputBorder(),
-                        hintText: 'Enter Student Name',
-                      ),
-                    ),
-                    const SizedBox(height: 16.0),
-                    TextFormField(
-                      controller: intakeController,
-                      decoration: InputDecoration(
-                        border: const OutlineInputBorder(),
-                        hintText: 'Enter Intake',
-                      ),
-                    ),
-                    const SizedBox(height: 16.0),
-                    TextFormField(
-                      controller: degreeController,
-                      decoration: InputDecoration(
-                        border: const OutlineInputBorder(),
-                        hintText: 'Enter Degree',
-                      ),
-                    ),
-                    const SizedBox(height: 16.0),
-                    TextFormField(
-                      controller: feeController,
-                      decoration: InputDecoration(
-                        border: const OutlineInputBorder(),
-                        hintText: 'Enter Fee',
-                      ),
-                    ),
-                    const SizedBox(height: 16.0),
-                    TextFormField(
-                      controller: amountController,
-                      decoration: InputDecoration(
-                        border: const OutlineInputBorder(),
-                        hintText: 'Enter Amount',
-                      ),
-                    ),
-                    const SizedBox(height: 16.0),
-                    TextFormField(
-                      controller: paymentController,
-                      decoration: InputDecoration(
-                        border: const OutlineInputBorder(),
-                        hintText: 'Enter Payment Method',
-                      ),
-                    ),
-                    const SizedBox(height: 16.0),
-                    ElevatedButton(
-                      onPressed: () {
-                        CollectionReference collRef =
-                            FirebaseFirestore.instance.collection('payment');
-
-                        collRef.add({
-                          'id': idController.text,
-                          'name': nameController.text,
-                          'intake': intakeController.text,
-                          'degree': degreeController.text,
-                          'fee': feeController.text,
-                          'amount': amountController.text,
-                          'payment': paymentController.text,
-                        });
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Display_Payment(),
-                          ),
-                        );
+                    StreamBuilder<QuerySnapshot>(
+                      stream: FirebaseFirestore.instance
+                          .collection('payment')
+                          .snapshots(),
+                      builder: (context, snapshot) {
+                        List<Row> ClientWidgets = [];
+                        if (snapshot.hasData) {
+                          final payment = snapshot.data?.docs.reversed.toList();
+                          for (var payment in payment!) {
+                            final ClientWidget = Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(payment['amount']),
+                                Text(payment['degree']),
+                                Text(payment['fee']),
+                                Text(payment['id']),
+                                Text(payment['intake']),
+                                Text(payment['name']),
+                                Text(payment['payment']),
+                              ],
+                            );
+                            ClientWidgets.add(ClientWidget);
+                          }
+                        }
+                        return Expanded(
+                            child: ListView(
+                          children: ClientWidgets,
+                        ));
                       },
+                    ),
+                    ElevatedButton(
+                      onPressed: () {},
                       style: ElevatedButton.styleFrom(
                         primary: const Color(
                             0xFF264F44), // Set the background color here
                       ),
-                      child: const Text('Submit'),
+                      child: const Text('OK'),
                     ),
                   ],
                 ),

@@ -48,6 +48,7 @@ dependencies:
   google_maps_flutter: ^2.5.0
   device_preview: ^1.1.0
   location: ^5.0.3
+  cloud_firestore: ^4.9.2
 
 dev_dependencies:
   flutter_test:

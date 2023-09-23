@@ -286,8 +286,7 @@ class _HomePageState extends State<HomePage> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) =>
-                                            const Online_Payment(),
+                                        builder: (context) => Online_Payment(),
                                       ),
                                     );
                                     // Add your navigation logic here

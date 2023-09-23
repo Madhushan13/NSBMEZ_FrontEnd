@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
@@ -21,6 +20,11 @@ class _BusTrackingPageState extends State<BusTrackingPage> {
   Location? _location;
   LocationData? _currentLocation;
 
+  // Add variables for the search bar and dropdown
+  TextEditingController _searchController = TextEditingController();
+  List<String> _locations = ["Location 1", "Location 2", "Location 3"];
+  String? _selectedLocation;
+
   @override
   void initState() {
     _init();
@@ -30,15 +34,13 @@ class _BusTrackingPageState extends State<BusTrackingPage> {
   _init() async {
     _location = Location();
     _cameraPosition = CameraPosition(
-        target: LatLng(
-            0, 0), // this is just the example lat and lng for initializing
-        zoom: 15);
+      target: LatLng(0, 0),
+      zoom: 15,
+    );
     _initLocation();
   }
 
-  //function to listen when we move position
   _initLocation() {
-    //use this to go to current location instead
     _location?.getLocation().then((location) {
       _currentLocation = location;
     });
@@ -58,11 +60,13 @@ class _BusTrackingPageState extends State<BusTrackingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Bus Tracking"),
+      ),
       body: _buildBody(),
       bottomNavigationBar: CustomBottomNavigationBar(
-        currentIndex: 3, // Set the correct index for EventsPage
+        currentIndex: 3,
         onTap: (index) {
-          // Handle bottom navigation bar tap event
           if (index == 2) {
             Navigator.push(
               context,
@@ -81,7 +85,36 @@ class _BusTrackingPageState extends State<BusTrackingPage> {
   }
 
   Widget _buildBody() {
-    return _getMap();
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: TextField(
+            controller: _searchController,
+            decoration: InputDecoration(
+              labelText: "Search for a Bus",
+              suffixIcon: DropdownButton<String>(
+                value: _selectedLocation,
+                items: _locations.map((String Bus) {
+                  return DropdownMenuItem<String>(
+                    value: Bus,
+                    child: Text(Bus),
+                  );
+                }).toList(),
+                onChanged: (String? newValue) {
+                  setState(() {
+                    _selectedLocation = newValue;
+                  });
+                },
+              ),
+            ),
+          ),
+        ),
+        Expanded(
+          child: _getMap(),
+        ),
+      ],
+    );
   }
 
   Widget _getMarker() {
@@ -90,15 +123,17 @@ class _BusTrackingPageState extends State<BusTrackingPage> {
       height: 40,
       padding: EdgeInsets.all(2),
       decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(100),
-          boxShadow: [
-            BoxShadow(
-                color: Colors.grey,
-                offset: Offset(0, 3),
-                spreadRadius: 4,
-                blurRadius: 6)
-          ]),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(100),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey,
+            offset: Offset(0, 3),
+            spreadRadius: 4,
+            blurRadius: 6,
+          ),
+        ],
+      ),
       child: ClipOval(child: Image.asset("assets/images/NSBMEZ Black.png")),
     );
   }
@@ -110,14 +145,14 @@ class _BusTrackingPageState extends State<BusTrackingPage> {
           initialCameraPosition: _cameraPosition!,
           mapType: MapType.normal,
           onMapCreated: (GoogleMapController controller) {
-            // now we need a variable to get the controller of google map
             if (!_googleMapController.isCompleted) {
               _googleMapController.complete(controller);
             }
           },
         ),
         Positioned.fill(
-            child: Align(alignment: Alignment.center, child: _getMarker()))
+          child: Align(alignment: Alignment.center, child: _getMarker()),
+        ),
       ],
     );
   }
