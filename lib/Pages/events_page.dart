@@ -140,13 +140,14 @@ class EventsPage extends StatelessWidget {
                   leading: const Icon(Icons.logout),
                   title: const Text('Logout'),
                   onTap: () {
-                    Navigator.push(
+                    Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
                         builder: (context) => const LoginPage(),
                       ),
+                      (route) =>
+                          false, // This prevents going back to the previous page.
                     );
-                    // Add your logout navigation logic here
                   },
                 ),
               ],

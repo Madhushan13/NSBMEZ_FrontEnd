@@ -125,7 +125,7 @@ class LectureDetails extends StatelessWidget {
       margin: const EdgeInsets.only(top: 10),
       padding: const EdgeInsets.all(10.0),
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 214, 220, 215),
+        color: const Color.fromARGB(255, 214, 220, 215),
         borderRadius: BorderRadius.circular(16.0),
         border: Border.all(
           color: const Color.fromARGB(255, 4, 4, 5),
@@ -135,84 +135,91 @@ class LectureDetails extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Module Name',
-                style: TextStyle(
-                  fontWeight: FontWeight.w900,
-                  decorationThickness: 2.5,
-                  fontSize: 14,
-                  color: Color.fromARGB(255, 6, 7, 7),
-                ),
-              ),
-              Text(
-                'Module code',
-                style: TextStyle(
-                  fontWeight: FontWeight.w900,
-                  decorationThickness: 2.5,
-                  fontSize: 14,
-                  color: Color.fromARGB(255, 6, 7, 7),
-                ),
-              ),
-              Text(
-                'Hall',
-                style: TextStyle(
-                  fontWeight: FontWeight.w900,
-                  decorationThickness: 2.5,
-                  fontSize: 14,
-                  color: Color.fromARGB(255, 6, 7, 7),
-                ),
-              ),
-              Text(
-                'Time',
-                style: TextStyle(
-                  fontWeight: FontWeight.w900,
-                  decorationThickness: 2.5,
-                  fontSize: 14,
-                  color: Color.fromARGB(255, 6, 7, 7),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                moduleName,
-                style: const TextStyle(
-                  fontSize: 14,
-                  color: Color.fromARGB(255, 6, 7, 7),
-                ),
+              Column(
+                children: [
+                  const Text(
+                    'Module Name',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w900,
+                      decorationThickness: 2.5,
+                      fontSize: 14,
+                      color: Color.fromARGB(255, 6, 7, 7),
+                    ),
+                  ),
+                  Text(
+                    moduleName,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: Color.fromARGB(255, 6, 7, 7),
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(width: 40),
-              Text(
-                moduleCode,
-                style: const TextStyle(
-                  fontSize: 14,
-                  color: Color.fromARGB(255, 6, 7, 7),
-                ),
+              Column(
+                children: [
+                  const Text(
+                    'Module code',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w900,
+                      decorationThickness: 2.5,
+                      fontSize: 14,
+                      color: Color.fromARGB(255, 6, 7, 7),
+                    ),
+                  ),
+                  Text(
+                    moduleCode,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: Color.fromARGB(255, 6, 7, 7),
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(width: 0.5),
-              Text(
-                hall,
-                style: const TextStyle(
-                  fontSize: 14,
-                  color: Color.fromARGB(255, 6, 7, 7),
-                ),
+              Column(
+                children: [
+                  const Text(
+                    'Hall',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w900,
+                      decorationThickness: 2.5,
+                      fontSize: 14,
+                      color: Color.fromARGB(255, 6, 7, 7),
+                    ),
+                  ),
+                  Text(
+                    hall,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: Color.fromARGB(255, 6, 7, 7),
+                    ),
+                  ),
+                ],
               ),
-              Text(
-                time,
-                style: const TextStyle(
-                  fontSize: 14,
-                  color: Color.fromARGB(255, 6, 7, 7),
-                ),
+              Column(
+                children: [
+                  const Text(
+                    'Time',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w900,
+                      decorationThickness: 2.5,
+                      fontSize: 14,
+                      color: Color.fromARGB(255, 6, 7, 7),
+                    ),
+                  ),
+                  Text(
+                    time,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: Color.fromARGB(255, 6, 7, 7),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
-          const SizedBox(height: 20),
         ],
       ),
     );
@@ -235,14 +242,14 @@ class CustomBottomNavigationBar extends StatelessWidget {
     return Container(
       color: Colors.white,
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
         child: GNav(
           backgroundColor: Colors.white,
-          color: Color.fromARGB(255, 56, 144, 76),
-          activeColor: Color.fromARGB(255, 255, 255, 255),
-          tabBackgroundColor: Color.fromARGB(255, 56, 144, 76),
+          color: const Color.fromARGB(255, 56, 144, 76),
+          activeColor: const Color.fromARGB(255, 255, 255, 255),
+          tabBackgroundColor: const Color.fromARGB(255, 56, 144, 76),
           gap: 8,
-          padding: EdgeInsets.all(15),
+          padding: const EdgeInsets.all(15),
           tabs: [
             GButton(
               icon: Icons.notifications,

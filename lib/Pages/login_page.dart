@@ -286,10 +286,10 @@ String? validateEmail(String? formEmail) {
   if (formEmail == null || formEmail.isEmpty) {
     return 'Please enter your email.';
   }
-  String pattern = r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$';
+  String pattern = r'^[\w-\.]+@students\.nsbm\.ac\.lk$';
   RegExp regex = RegExp(pattern);
   if (!regex.hasMatch(formEmail)) {
-    return 'Please enter a valid email.';
+    return 'Please enter a valid NSBM email.';
   }
   return null;
 }

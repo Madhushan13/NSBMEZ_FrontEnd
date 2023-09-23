@@ -23,7 +23,7 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       body: Form(
         key: _formKey,
         child: Column(
@@ -41,7 +41,7 @@ class _SignupPageState extends State<SignupPage> {
               ),
             ),
             Expanded(
-              flex: 5,
+              flex: 4,
               child: ClipRRect(
                 borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(20),
@@ -230,7 +230,7 @@ class _SignupPageState extends State<SignupPage> {
                             ),
                           ),
 
-                          const SizedBox(height: 20),
+                          const SizedBox(height: 25),
                           GestureDetector(
                             onTap: () {
                               Navigator.push(
@@ -250,7 +250,8 @@ class _SignupPageState extends State<SignupPage> {
                           ),
 
                           Padding(
-                            padding: const EdgeInsets.only(bottom: 45.0),
+                            padding:
+                                const EdgeInsets.only(bottom: 45.0, top: 25),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [

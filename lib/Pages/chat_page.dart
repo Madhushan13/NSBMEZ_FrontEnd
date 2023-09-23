@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/Pages/home_page.dart';
 
 class ChatDialog extends StatelessWidget {
   @override
@@ -12,7 +13,12 @@ class ChatDialog extends StatelessWidget {
             icon: const Icon(Icons.close),
             onPressed: () {
               // Handle closing the chat dialog here
-              Navigator.of(context).pop(); // Close the dialog
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const HomePage(),
+                ),
+              ); // Close the dialog
             },
           ),
         ],

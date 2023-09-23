@@ -21,7 +21,7 @@ class _LoadingPageState extends State<LoadingPage>
     // Initialize the animation controller
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
     );
 
     // Define the fade animation from 0.0 to 1.0
@@ -33,7 +33,7 @@ class _LoadingPageState extends State<LoadingPage>
     );
 
     // Start the animation after a delay of 2 seconds
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 0), () {
       _animationController.forward();
     });
   }

@@ -140,13 +140,14 @@ class _HomePageState extends State<HomePage> {
                   leading: const Icon(Icons.logout),
                   title: const Text('Logout'),
                   onTap: () {
-                    Navigator.pushReplacement(
+                    Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
                         builder: (context) => const LoginPage(),
                       ),
+                      (route) =>
+                          false, // This prevents going back to the previous page.
                     );
-                    // Add your logout navigation logic here
                   },
                 ),
               ],
@@ -494,12 +495,12 @@ class _HomePageState extends State<HomePage> {
                         child: Column(
                           children: [
                             Container(
-                              margin: const EdgeInsets.only(top: 10),
+                              margin: const EdgeInsets.only(top: 4),
                               child: const LectureDetails(
                                 moduleName: 'MAD',
-                                moduleCode: 'SE303.3',
+                                moduleCode: 'SE101.3',
                                 hall: 'C2',
-                                time: '9.00AM-\n12.00PM',
+                                time: '9 AM-1 PM',
                               ),
                             ),
                             const SizedBox(height: 1),
@@ -508,9 +509,9 @@ class _HomePageState extends State<HomePage> {
                               margin: const EdgeInsets.only(top: 10),
                               child: const LectureDetails(
                                 moduleName: 'IAS',
-                                moduleCode: 'SE303.3',
-                                hall: 'C2',
-                                time: '1.00AM-\n 5.00PM',
+                                moduleCode: 'SE204.3',
+                                hall: 'C5',
+                                time: '1 AM-5 PM',
                               ),
                             ),
                             const SizedBox(height: 1),
@@ -518,10 +519,10 @@ class _HomePageState extends State<HomePage> {
                             Container(
                               margin: const EdgeInsets.only(top: 10),
                               child: const LectureDetails(
-                                moduleName: 'LAB-10 IAS',
-                                moduleCode: 'SE303.3',
-                                hall: 'C2',
-                                time: '9.00AM-\n1.00PM',
+                                moduleName: 'LAB IAS',
+                                moduleCode: 'SE101.3',
+                                hall: 'C7',
+                                time: '9 AM-1 PM',
                               ),
                             ),
                             const SizedBox(
@@ -530,10 +531,10 @@ class _HomePageState extends State<HomePage> {
                             Container(
                               margin: const EdgeInsets.only(top: 10),
                               child: const LectureDetails(
-                                moduleName: 'Cryptography',
-                                moduleCode: 'SE303.3',
-                                hall: 'C2',
-                                time: '2.00PM-\n5.00PM',
+                                moduleName: 'Crypto',
+                                moduleCode: 'SE207.3',
+                                hall: 'C1',
+                                time: '2 PM-5 PM',
                               ),
                             ),
                             const SizedBox(
