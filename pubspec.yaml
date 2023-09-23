@@ -50,6 +50,7 @@ dependencies:
   location: ^5.0.3
   cloud_firestore: ^4.9.2
   mailer: ^6.0.1
+  http: ^0.13.3
 
 dev_dependencies:
   flutter_test:

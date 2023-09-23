@@ -1,7 +1,95 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/Pages/home_page.dart';
+import 'package:http/http.dart' as http;
 
-class ChatDialog extends StatelessWidget {
+class ChatDialog extends StatefulWidget {
+  @override
+  _ChatDialogState createState() => _ChatDialogState();
+}
+
+class _ChatDialogState extends State<ChatDialog> {
+  List<ChatMessage> messages = [];
+
+  // Replace with your API key and API endpoint
+  final String apiKey = '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';
+  final String apiUrl =
+      'https://api.openai.com/v1/engines/davinci-codex/completions';
+
+  TextEditingController textController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    fetchChatMessages();
+  }
+
+  Future<void> fetchChatMessages() async {
+    try {
+      final response = await http.get(
+        Uri.parse(apiUrl),
+        headers: {'Authorization': 'Bearer $apiKey'},
+      );
+
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> data = json.decode(response.body);
+
+        setState(() {
+          messages = data['choices'][0]['message']['content']
+              .map<ChatMessage>((messageData) => ChatMessage(
+                    isMe:
+                        false, // Assuming all messages fetched are from the AI
+                    text: messageData,
+                  ))
+              .toList();
+        });
+      } else {
+        throw Exception('Failed to fetch chat messages');
+      }
+    } catch (error) {
+      print(error);
+    }
+  }
+
+  Future<void> sendMessage(String text) async {
+    setState(() {
+      messages.add(ChatMessage(
+        isMe: true,
+        text: textController.text,
+      ));
+    });
+    textController.clear();
+    // try {
+    //   final response = await http.post(
+    //     Uri.parse(apiUrl),
+    //     headers: {
+    //       'Authorization': 'Bearer $apiKey',
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: json.encode({
+    //       'prompt': text,
+    //       'max_tokens': 50, // You can adjust the max_tokens as needed
+    //     }),
+    //   );
+
+    //   if (response.statusCode == 200) {
+    //     final Map<String, dynamic> data = json.decode(response.body);
+    //     final String generatedMessage = data['choices'][0]['text'];
+
+    //     setState(() {
+    //       messages.add(ChatMessage(
+    //         isMe: true, // Assuming the user's message
+    //         text: generatedMessage,
+    //       ));
+    //     });
+    //   } else {
+    //     throw Exception('Failed to send message');
+    //   }
+    // } catch (error) {
+    //   print(error);
+    // }
+  }
+
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -12,13 +100,7 @@ class ChatDialog extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.close),
             onPressed: () {
-              // Handle closing the chat dialog here
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const HomePage(),
-                ),
-              ); // Close the dialog
+              Navigator.pop(context); // Close the dialog
             },
           ),
         ],
@@ -29,22 +111,23 @@ class ChatDialog extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              child: ListView(
-                children: [
-                  ChatMessage(isMe: true, text: 'Hello!'),
-                  ChatMessage(isMe: false, text: 'Hi there!'),
-                  ChatMessage(isMe: true, text: 'How are you?'),
-                ],
+              child: ListView.builder(
+                itemCount: messages.length,
+                itemBuilder: (context, index) {
+                  return messages[index];
+                },
               ),
             ),
-            const TextField(
+            TextField(
+              controller: textController,
               decoration: InputDecoration(
                 hintText: 'Type a message...',
               ),
             ),
             ElevatedButton(
               onPressed: () {
-                // Handle sending message here
+                sendMessage(textController.text);
+                textController.clear();
               },
               child: const Text('Send'),
             ),
