@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/Pages/home_page.dart';
-import 'package:flutter_application/Pages/resetpw_page.dart';
 import 'package:flutter_application/Pages/signup_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -75,6 +74,9 @@ class _LoginPageState extends State<LoginPage> {
       vertical: screenHeight * 0.02,
     );
 
+    // Define responsive font size
+    final double fontSize = screenWidth > 600 ? 30.0 : 18.0;
+
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: Form(
@@ -109,12 +111,13 @@ class _LoginPageState extends State<LoginPage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          const Padding(
-                            padding: EdgeInsets.only(bottom: 20.0),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 20.0),
                             child: Text(
                               'LOGIN',
                               style: TextStyle(
-                                fontSize: 30,
+                                fontSize: fontSize * 1.5,
+                                fontWeight: FontWeight.bold,
                                 color: Color.fromARGB(255, 15, 60, 36),
                               ),
                             ),
@@ -203,35 +206,14 @@ class _LoginPageState extends State<LoginPage> {
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                               ),
-                              child: const Text(
-                                'Sign In',
-                                style: TextStyle(fontSize: 18),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 15),
-                          // Forgot Password
-                          GestureDetector(
-                            onTap: () {
-                              // FORGOT PW LINK
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const ResetPWPage(),
-                                ),
-                              );
-                            },
-                            child: const Padding(
-                              padding: EdgeInsets.only(bottom: 8.0),
                               child: Text(
-                                'Forgot Password?',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.blue,
-                                ),
+                                'Sign In',
+                                style: TextStyle(fontSize: fontSize),
                               ),
                             ),
                           ),
+                          const SizedBox(height: 10),
+                          // Forgot Password
 
                           // Sign Up
                           Padding(

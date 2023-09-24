@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_application/Pages/login_page.dart';
-import 'package:flutter_application/Pages/resetpw_page.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -20,8 +19,14 @@ class _SignupPageState extends State<SignupPage> {
   TextEditingController cpasswordController = TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>(); // Add form key
+
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
+    final double fontSize = screenWidth > 600 ? 30.0 : 18.0;
+
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: Form(
@@ -32,43 +37,45 @@ class _SignupPageState extends State<SignupPage> {
               flex: 2,
               child: Center(
                 child: FractionallySizedBox(
-                    widthFactor: 0.7,
-                    heightFactor: 1,
-                    child: Image.asset(
-                      'assets/images/NSBMEZ Black.png',
-                      fit: BoxFit.contain,
-                    )),
+                  widthFactor: 0.7,
+                  heightFactor: 1,
+                  child: Image.asset(
+                    'assets/images/NSBMEZ Black.png',
+                    fit: BoxFit.contain,
+                  ),
+                ),
               ),
             ),
             Expanded(
               flex: 4,
               child: ClipRRect(
                 borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20)),
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                ),
                 child: Container(
                   color: const Color.fromARGB(230, 121, 196, 120),
                   child: Padding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding: EdgeInsets.all(screenWidth * 0.05),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          const Padding(
-                            padding: EdgeInsets.only(bottom: 25.0),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 25.0),
                             child: Text(
                               'SignUp',
                               style: TextStyle(
-                                fontSize: 30,
+                                fontSize: fontSize * 1.5,
+                                fontWeight: FontWeight.bold,
                                 color: Color.fromARGB(255, 15, 60, 36),
                               ),
                             ),
                           ),
-                          // Username
                           TextFormField(
                             controller: usernameController,
                             validator: validateEmail,
-                            decoration: const InputDecoration(
+                            decoration: InputDecoration(
                               enabledBorder: OutlineInputBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
@@ -77,21 +84,20 @@ class _SignupPageState extends State<SignupPage> {
                                 ),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide: BorderSide(
-                                    color: Colors.black,
-                                  )),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                  color: Colors.black,
+                                ),
+                              ),
                               fillColor: Color(0xFFBAD3C8),
                               filled: true,
                               hintText: 'Student ID',
                             ),
                           ),
-
-                          const SizedBox(
-                            height: 25,
+                          SizedBox(
+                            height: screenHeight * 0.02,
                           ),
-                          // Password
                           TextFormField(
                             controller: passwordController,
                             validator: validatePW,
@@ -107,25 +113,26 @@ class _SignupPageState extends State<SignupPage> {
                                     ? Icons.visibility
                                     : Icons.visibility_off),
                               ),
-                              enabledBorder: const OutlineInputBorder(
+                              enabledBorder: OutlineInputBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
                                 borderSide: BorderSide(
                                   color: Color(0xFFBAD3C8),
                                 ),
                               ),
-                              focusedBorder: const OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide: BorderSide(
-                                    color: Colors.black,
-                                  )),
-                              fillColor: const Color(0xFFBAD3C8),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                  color: Colors.black,
+                                ),
+                              ),
+                              fillColor: Color(0xFFBAD3C8),
                               filled: true,
                               hintText: 'Password',
                             ),
                           ),
-                          const SizedBox(height: 25),
+                          SizedBox(height: screenHeight * 0.02),
                           TextFormField(
                             validator: ((value) =>
                                 value != passwordController.text
@@ -144,33 +151,35 @@ class _SignupPageState extends State<SignupPage> {
                                     ? Icons.visibility
                                     : Icons.visibility_off),
                               ),
-                              enabledBorder: const OutlineInputBorder(
+                              enabledBorder: OutlineInputBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
                                 borderSide: BorderSide(
                                   color: Color(0xFFBAD3C8),
                                 ),
                               ),
-                              focusedBorder: const OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide: BorderSide(
-                                    color: Colors.black,
-                                  )),
-                              fillColor: const Color(0xFFBAD3C8),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                  color: Colors.black,
+                                ),
+                              ),
+                              fillColor: Color(0xFFBAD3C8),
                               filled: true,
                               hintText: 'Confirm password',
                             ),
                           ),
-                          const SizedBox(
-                            height: 25,
+                          SizedBox(
+                            height: screenHeight * 0.02,
                           ),
                           Center(
                             child: Text(
                               authError ? errorMessage : '',
-                              style: const TextStyle(
-                                  color: Colors
-                                      .red), // You can style the error message text here
+                              style: TextStyle(
+                                color: Colors.red,
+                                fontSize: fontSize * 0.6,
+                              ),
                             ),
                           ),
                           ElevatedButton(
@@ -183,7 +192,6 @@ class _SignupPageState extends State<SignupPage> {
                                     password: passwordController.text,
                                   );
 
-                                  // Navigate to the login page after successful registration
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
@@ -218,48 +226,36 @@ class _SignupPageState extends State<SignupPage> {
                               }
                             },
                             style: ElevatedButton.styleFrom(
-                              fixedSize: const Size(500, 50),
+                              fixedSize: Size(
+                                screenWidth * 0.9,
+                                screenHeight * 0.06,
+                              ),
                               backgroundColor: Colors.black,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
-                            child: const Text(
+                            child: Text(
                               'Sign Up',
-                              style: TextStyle(fontSize: 18),
-                            ),
-                          ),
-
-                          const SizedBox(height: 25),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const ResetPWPage(),
-                                ),
-                              );
-                            },
-                            child: const Text(
-                              'Forgot Password?',
                               style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.blue,
+                                fontSize: fontSize,
                               ),
                             ),
                           ),
-
+                          SizedBox(height: screenHeight * 0.02),
                           Padding(
-                            padding:
-                                const EdgeInsets.only(bottom: 45.0, top: 25),
+                            padding: EdgeInsets.only(
+                              bottom: screenHeight * 0.07,
+                              top: screenHeight * 0.02,
+                            ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Text(
-                                  'Don\'t have an account? ',
+                                Text(
+                                  'Already have an account? ',
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 18,
+                                    fontSize: fontSize,
                                   ),
                                 ),
                                 GestureDetector(
@@ -271,10 +267,10 @@ class _SignupPageState extends State<SignupPage> {
                                       ),
                                     );
                                   },
-                                  child: const Text(
+                                  child: Text(
                                     'Sign In',
                                     style: TextStyle(
-                                      fontSize: 18,
+                                      fontSize: fontSize,
                                       color: Colors.blue,
                                     ),
                                   ),
@@ -314,13 +310,6 @@ String? validatePW(String? formPassword) {
   }
   if (formPassword.length < 6) {
     return 'Password must be at least 6 characters.';
-  }
-  return null;
-}
-
-String? validateCPW(String? formCpass) {
-  if (formCpass == null || formCpass.isEmpty) {
-    return 'Please enter your password.';
   }
   return null;
 }

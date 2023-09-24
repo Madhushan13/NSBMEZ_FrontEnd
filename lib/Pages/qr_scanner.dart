@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/Pages/sendmail.dart';
 //import 'package:flutter/services.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 //import 'package:qr_scanner/qr_scanner.dart';
@@ -76,7 +77,7 @@ class _QRScannerState extends State<QRScanner> {
               Image.asset(
                 'assets/images/NSBMEZ Black.png',
                 height: 100,
-                width: 140,
+                width: 150,
                 fit: BoxFit.contain,
               ),
             ],
@@ -84,61 +85,32 @@ class _QRScannerState extends State<QRScanner> {
         ),
         endDrawer: Drawer(
           child: Container(
-            color: const Color(0xFFBAD3C8),
-            child: ListView(
-              padding: EdgeInsets.zero,
+            color: Colors.white, // Change the background color as needed
+            child: Column(
               children: [
-                const UserAccountsDrawerHeader(
-                  accountName: Text('John Doe'),
-                  accountEmail: Text('johndoe@example.com'),
-                  currentAccountPicture: CircleAvatar(
-                    child: Icon(
-                      Icons.person,
-                    ),
-                  ),
-                  decoration: BoxDecoration(color: Color(0xFF264F44)),
+                Image.asset(
+                  'assets/images/NSBMEZ Black.png',
+                  height: 100,
+                  width: 150,
+                  fit: BoxFit.contain,
                 ),
-                ListTile(
-                  leading: const Icon(Icons.account_box),
-                  title: const Text('My Profile'),
-                  onTap: () {
-                    // Add your profile navigation logic here
-                  },
-                ),
-                ListTile(
-                  leading: const Icon(Icons.language),
-                  title: const Text('Language'),
-                  onTap: () {
-                    // Add your transport service navigation logic here
-                  },
+                const SizedBox(
+                  height: 10,
                 ),
                 ListTile(
                   leading: const Icon(Icons.support_agent),
                   title: const Text('Student Support'),
                   onTap: () {
-                    // Add your attendance/QR navigation logic here
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SendMail(),
+                      ),
+                    );
                   },
                 ),
-                ListTile(
-                  leading: const Icon(Icons.settings),
-                  title: const Text('Settings'),
-                  onTap: () {
-                    // Add your events navigation logic here
-                  },
-                ),
-                ListTile(
-                  leading: const Icon(Icons.group),
-                  title: const Text('About us'),
-                  onTap: () {
-                    // Add your time table navigation logic here
-                  },
-                ),
-                ListTile(
-                  leading: const Icon(Icons.library_books),
-                  title: const Text('Terms and Conditions '),
-                  onTap: () {
-                    // Add your result navigation logic here
-                  },
+                const SizedBox(
+                  height: 10,
                 ),
                 ListTile(
                   leading: const Icon(Icons.logout),
@@ -149,9 +121,16 @@ class _QRScannerState extends State<QRScanner> {
                       MaterialPageRoute(
                         builder: (context) => const LoginPage(),
                       ),
-                      (route) =>
-                          false, // This prevents going back to the previous page.
+                      (route) => false,
                     );
+                  },
+                ),
+                const Spacer(),
+                ListTile(
+                  leading: const Icon(Icons.settings),
+                  title: const Text('Settings'),
+                  onTap: () {
+                    // Navigate to the settings page
                   },
                 ),
               ],

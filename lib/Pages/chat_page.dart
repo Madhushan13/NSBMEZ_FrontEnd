@@ -120,16 +120,21 @@ class _ChatDialogState extends State<ChatDialog> {
             ),
             TextField(
               controller: textController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: 'Type a message...',
               ),
             ),
             ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
+              ),
               onPressed: () {
                 sendMessage(textController.text);
                 textController.clear();
               },
-              child: const Text('Send'),
+              child: const Text(
+                'Send',
+              ),
             ),
           ],
         ),
@@ -152,7 +157,7 @@ class ChatMessage extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         margin: const EdgeInsets.symmetric(vertical: 4.0),
         decoration: BoxDecoration(
-          color: isMe ? Colors.blue : Colors.grey,
+          color: isMe ? Colors.green : Colors.grey,
           borderRadius: BorderRadius.circular(8.0),
         ),
         child: Text(

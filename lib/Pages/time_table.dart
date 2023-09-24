@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/Pages/sendmail.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 import 'Home_widget.dart';
 import 'chat_page.dart';
 import 'home_page.dart';
+import 'login_page.dart';
 
 class TimeTable extends StatelessWidget {
   const TimeTable({super.key});
@@ -12,6 +14,94 @@ class TimeTable extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          title: IconButton(
+            icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          toolbarHeight: 80,
+          actions: [
+            Builder(
+              builder: (context) => IconButton(
+                color: Colors.black,
+                onPressed: () {
+                  Scaffold.of(context).openEndDrawer();
+                },
+                icon: const Icon(Icons.menu),
+              ),
+            ),
+          ],
+          flexibleSpace: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/images/NSBMEZ Black.png',
+                height: 100,
+                width: 150,
+                fit: BoxFit.contain,
+              ),
+            ],
+          ),
+        ),
+        endDrawer: Drawer(
+          child: Container(
+            color: Colors.white, // Change the background color as needed
+            child: Column(
+              children: [
+                Image.asset(
+                  'assets/images/NSBMEZ Black.png',
+                  height: 100,
+                  width: 150,
+                  fit: BoxFit.contain,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                ListTile(
+                  leading: const Icon(Icons.support_agent),
+                  title: const Text('Student Support'),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SendMail(),
+                      ),
+                    );
+                  },
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                ListTile(
+                  leading: const Icon(Icons.logout),
+                  title: const Text('Logout'),
+                  onTap: () {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginPage(),
+                      ),
+                      (route) => false,
+                    );
+                  },
+                ),
+                const Spacer(),
+                ListTile(
+                  leading: const Icon(Icons.settings),
+                  title: const Text('Settings'),
+                  onTap: () {
+                    // Navigate to the settings page
+                  },
+                ),
+              ],
+            ),
+          ),
+        ),
         body: SfCalendar(
           view: CalendarView.week,
           firstDayOfWeek: 1,
